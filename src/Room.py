@@ -23,5 +23,5 @@ class Room:
     def get_description(self) -> str:
         return "{}\n".format(self.description)
 
-    def __str__(self):
+    def __repr__(self):
         return self.name
