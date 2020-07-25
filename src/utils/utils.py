@@ -1,4 +1,3 @@
-import typing
 import csv
 import json
 from os import path

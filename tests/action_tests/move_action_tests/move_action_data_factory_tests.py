@@ -1,20 +1,20 @@
 import unittest
-from src.actions.move.MoveActionDataFactory import MoveActionDataFactory, MoveDirection
+from src.actions.move.MoveActionDataFactory import MoveActionDataFactory, MoveDirection, ParseException
 
 
 class MoveActionDataFactoryCreateDataTests(unittest.TestCase):
     def test_create_data_from_empty_string(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(ParseException):
             MoveActionDataFactory.CreateData("")
 
     def test_create_data_from_irrelevant_string(self):
         irrelevant_string = "#Faas83(%@o.0bi9}"
-        with self.assertRaises(Exception):
+        with self.assertRaises(ParseException):
             MoveActionDataFactory.CreateData(irrelevant_string)
 
     def test_create_data_from_single_word_but_no_direction_string(self):
         for word in MoveActionDataFactory.MOVE_WORDS:
-            with self.assertRaises(Exception):
+            with self.assertRaises(ParseException):
                 MoveActionDataFactory.CreateData(word)
 
     def test_all_valid_direction_one_word_strings(self):

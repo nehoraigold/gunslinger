@@ -1,6 +1,7 @@
 import typing
 from src.actions.abstract.IActionDataFactory import IActionDataFactory
 from src.actions.move.MoveDirection import MoveDirection
+from src.utils.ParseException import ParseException
 
 
 class MoveActionDataFactory(IActionDataFactory):
@@ -25,7 +26,7 @@ class MoveActionDataFactory(IActionDataFactory):
             return MoveActionDataFactory.handle_one_word_string(words[0])
         if len(words) == 2:
             return MoveActionDataFactory.handle_two_word_string(words[0], words[1])
-        raise Exception("Unable to parse move action {}".format(string))
+        raise ParseException("Unable to parse move action {}".format(string))
 
     @staticmethod
     def handle_two_word_string(first_word: str, second_word: str) -> MoveDirection:
@@ -38,7 +39,7 @@ class MoveActionDataFactory(IActionDataFactory):
         elif second_word in MoveActionDataFactory.RIGHT_WORDS:
             return MoveDirection.RIGHT
         else:
-            raise Exception("Unable to parse move action {} {}".format(first_word, second_word))
+            raise ParseException("Unable to parse move action {} {}".format(first_word, second_word))
 
     @staticmethod
     def handle_one_word_string(word: str) -> MoveDirection:
@@ -51,4 +52,4 @@ class MoveActionDataFactory(IActionDataFactory):
         elif word in MoveActionDataFactory.RIGHT_WORDS:
             return MoveDirection.RIGHT
         else:
-            raise Exception("Unable to parse move action {}".format(word))
+            raise ParseException("Unable to parse move action {}".format(word))
