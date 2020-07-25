@@ -1,0 +1,5 @@
+{
+    "mapFilePath": "csv/map.csv",
+    "roomFilePath": "csv/rooms.csv",
+    "objectsFilePath": "csv/objects.csv"
+}
