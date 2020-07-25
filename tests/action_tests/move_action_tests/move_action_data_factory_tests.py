@@ -29,6 +29,21 @@ class MoveActionDataFactoryCreateDataTests(unittest.TestCase):
             for word in words:
                 self.assertEqual(direction, MoveActionDataFactory.CreateData(word))
 
+    def test_all_valid_two_word_strings(self):
+        first_words = MoveActionDataFactory.MOVE_WORDS
+        valid_words = {
+            MoveDirection.UP: MoveActionDataFactory.UP_WORDS,
+            MoveDirection.DOWN: MoveActionDataFactory.DOWN_WORDS,
+            MoveDirection.LEFT: MoveActionDataFactory.LEFT_WORDS,
+            MoveDirection.RIGHT: MoveActionDataFactory.RIGHT_WORDS
+        }
+
+        for first_word in first_words:
+            for direction, second_words in valid_words.items():
+                for second_word in second_words:
+                    self.assertEqual(direction,
+                                     MoveActionDataFactory.CreateData("{} {}".format(first_word, second_word)))
+
     def test_create_data_from_relevant_two_word_string(self):
         valid_two_word_string = "go north"
         expected_direction = MoveDirection.UP
