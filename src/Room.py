@@ -14,6 +14,9 @@ class Room:
     def Describe(self):
         return self.get_description()
 
+    def SetDescription(self, description: str):
+        self.description = description
+
     def get_name(self):
         return "{}\n".format(self.name)
 
@@ -21,4 +24,4 @@ class Room:
         return "{}\n".format(self.description)
 
     def __str__(self):
-        return self.get_name()
+        return self.name

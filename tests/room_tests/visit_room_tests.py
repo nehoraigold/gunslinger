@@ -9,7 +9,9 @@ class VisitRoomTests(unittest.TestCase):
         room = Room(name, description)
 
         first_visit_description = room.Visit()
-        self.assertTrue(name in first_visit_description and description in first_visit_description)
+
+        self.assertIn(name, first_visit_description)
+        self.assertIn(description, first_visit_description)
 
     def test_visit_room_second_time(self):
         name = "name"
@@ -18,4 +20,14 @@ class VisitRoomTests(unittest.TestCase):
 
         room.Visit()
         second_visit_description = room.Visit()
-        self.assertTrue(name in second_visit_description and description not in second_visit_description)
+
+        self.assertIn(name, second_visit_description)
+        self.assertNotIn(description, second_visit_description)
+
+    def test_visit_room_without_description(self):
+        name = "name"
+        room = Room(name)
+
+        visit_description = room.Visit()
+
+        self.assertIn(name, visit_description)
