@@ -1,5 +1,5 @@
 import typing
-from src.actions.MoveDirection import MoveDirection
+from src.actions.move.MoveDirection import MoveDirection
 
 
 class Player:
