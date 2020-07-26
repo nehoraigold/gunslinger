@@ -2,5 +2,5 @@ from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action,
 
 
 class LookActionHandler(metaclass=IActionHandler):
-    def Handle(self, action: Action, room: Room):
+    def Handle(self, action: Action, room: Room) -> None:
         print(room.Describe())

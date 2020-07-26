@@ -9,7 +9,7 @@ class MoveActionHandler(metaclass=IActionHandler):
         self.world = world
         self.player = player
 
-    def Handle(self, action: Action, old_room: Room):
+    def Handle(self, action: Action, old_room: Room) -> None:
         self.player.Move(action.GetData())
         new_room = self.world.GetRoom(self.player.GetLocation())
         if new_room is None:

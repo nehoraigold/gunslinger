@@ -1,8 +1,8 @@
 import typing
-from src.actions.parsers.abstract.IActionDataParser import IActionDataParser
+from src.actions.parsers.abstract.IActionParser import IActionParser
 
 
-class LookActionDataParser(IActionDataParser):
+class LookActionParser(IActionParser):
     @staticmethod
     def GetWords() -> typing.List[str]:
         return ["look", "describe", "observe"]

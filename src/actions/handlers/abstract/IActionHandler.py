@@ -5,5 +5,5 @@ from src.World import Room
 
 class IActionHandler(ABCMeta):
     @abstractmethod
-    def Handle(self, action: Action, current_room: Room):
+    def Handle(self, action: Action, current_room: Room) -> None:
         raise NotImplementedError

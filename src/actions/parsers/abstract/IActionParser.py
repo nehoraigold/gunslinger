@@ -2,7 +2,7 @@ import typing
 from abc import ABCMeta
 
 
-class IActionDataParser(ABCMeta):
+class IActionParser(ABCMeta):
     @staticmethod
     def GetWords() -> typing.List[str]:
         raise NotImplementedError

@@ -14,7 +14,7 @@ def main():
     print(room.Visit())
     while True:
         try:
-            action = ActionParser.Parse(input().strip())
+            action = ActionParser.Parse(input())
         except ParseException:
             print("Invalid action.")
             action = None
