@@ -9,7 +9,7 @@ def main():
     configs = ConfigsLoader("config.json")
     world = World(configs.Get("mapFilePath"), configs.Get("roomFilePath"))
     player = Player((1, 6))
-    handler = ActionHandler(world, player)
+    action_handler = ActionHandler(world, player)
     room = world.GetRoom(player.GetLocation())
     print(room.Visit())
     while True:
@@ -19,7 +19,7 @@ def main():
             print("Invalid action.")
             action = None
         print()
-        handler.Handle(action, room)
+        action_handler.Handle(action, room)
         room = world.GetRoom(player.GetLocation())
 
 

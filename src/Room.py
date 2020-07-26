@@ -1,27 +1,30 @@
+from src.utils import utils
+
+
 class Room:
     def __init__(self, name: str, description: str = None):
         self.name = name
         self.description = description
         self.has_visited = False
 
-    def Visit(self):
-        visit_desc = self.get_name()
+    def Visit(self) -> str:
+        visit_description = self.get_name()
         if not self.has_visited:
-            visit_desc += self.get_description()
+            visit_description += self.get_description()
             self.has_visited = True
-        return visit_desc
+        return visit_description
 
-    def Describe(self):
+    def Describe(self) -> str:
         return self.get_description()
 
     def SetDescription(self, description: str):
         self.description = description
 
-    def get_name(self):
-        return "{}\n".format(self.name)
+    def get_name(self) -> str:
+        return "{}\n".format(utils.format_to_header(self.name))
 
     def get_description(self) -> str:
-        return "{}\n".format(self.description)
+        return "{}\n".format(self.description) if self.description is not None and len(self.description) > 0 else ""
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.name

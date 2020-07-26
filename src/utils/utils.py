@@ -16,3 +16,17 @@ def load_json(file_path: str):
     if not path.isfile(file_path):
         raise FileNotFoundError("Could not load JSON file {}".format(file_path))
     return json.load(open(file_path))
+
+
+def format_to_header(title: str) -> str:
+    if title is None or len(title) == 0:
+        return ""
+
+    BUFFER_SIZE = 2
+    HORIZONTAL_BORDER = "-"
+    VERTICAL_BORDER = "|"
+    CORNER_BORDER = "+"
+
+    horizontal_bar = CORNER_BORDER + (HORIZONTAL_BORDER * (2 * BUFFER_SIZE + len(title))) + CORNER_BORDER
+    middle_bar = VERTICAL_BORDER + (" " * BUFFER_SIZE) + title + (" " * BUFFER_SIZE) + VERTICAL_BORDER
+    return "{}\n{}\n{}".format(horizontal_bar, middle_bar, horizontal_bar)
