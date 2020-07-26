@@ -4,8 +4,8 @@ from src.utils import utils
 
 
 class World:
-    def __init__(self, map_csv_file_path: str, room_descriptions_csv_file_path: str):
-        self.board: typing.Dict[typing.Tuple[int, int], Room] = self.load_board_from_csv(map_csv_file_path)
+    def __init__(self, map_csv_file_path: str = None, room_descriptions_csv_file_path: str = None):
+        self.board = self.load_board_from_csv(map_csv_file_path) if map_csv_file_path is not None else {}
         self.initialize_rooms(room_descriptions_csv_file_path)
 
     @staticmethod
@@ -13,6 +13,8 @@ class World:
         return {(i, j): Room(cell) for j, row in enumerate(utils.load_csv(csv_file_path)) for i, cell in enumerate(row)}
 
     def initialize_rooms(self, room_descriptions_csv_file_path: str):
+        if room_descriptions_csv_file_path is None:
+            return
         ROOM_NAME_INDEX = 0
         ROOM_DESCRIPTION_INDEX = 1
         for row in utils.load_csv(room_descriptions_csv_file_path):
