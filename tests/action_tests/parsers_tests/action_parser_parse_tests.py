@@ -1,5 +1,5 @@
 import unittest
-from src.actions.ActionParser import ActionParser, ParseException, ActionType
+from src.actions.parsers.ActionParser import ActionParser, ParseException, ActionType
 
 
 class ActionParserParseTests(unittest.TestCase):

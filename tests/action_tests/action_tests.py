@@ -1,6 +1,6 @@
 import unittest
 from src.actions.Action import Action, ActionType
-from src.actions.action_data.move.MoveDirection import MoveDirection
+from src.actions.parsers.move.MoveDirection import MoveDirection
 
 
 class ActionTests(unittest.TestCase):

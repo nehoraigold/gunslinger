@@ -1,8 +1,8 @@
 from src.World import World
 from src.Player import Player
 from src.configs_loader.ConfigsLoader import ConfigsLoader
-from src.actions.ActionParser import ActionParser, ParseException
-from src.actions.ActionHandler import ActionHandler
+from src.actions.parsers.ActionParser import ActionParser, ParseException
+from src.actions.handlers.ActionHandler import ActionHandler
 
 
 def main():

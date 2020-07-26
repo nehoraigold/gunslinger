@@ -1,5 +1,5 @@
 import unittest
-from src.actions.ActionHandler import ActionHandler, World, Player, Room, Action, ActionType, MoveDirection
+from src.actions.handlers.ActionHandler import ActionHandler, World, Player, Room, Action, ActionType, MoveDirection
 
 
 class ActionHandlerHandleTests(unittest.TestCase):
