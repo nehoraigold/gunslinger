@@ -1,7 +1,7 @@
 from src.World import World
 from src.Player import Player
 from src.configs_loader.ConfigsLoader import ConfigsLoader
-from src.actions.ActionFactory import ActionFactory, ParseException
+from src.actions.ActionParser import ActionParser, ParseException
 from src.actions.ActionType import ActionType
 
 
@@ -13,7 +13,7 @@ def main():
         room = world.GetRoom(player.GetLocation())
         print(room.Visit())
         try:
-            action = ActionFactory.Create(input().strip())
+            action = ActionParser.Parse(input().strip())
         except ParseException:
             print("Invalid action.")
             action = None
@@ -22,6 +22,8 @@ def main():
             continue
         if action.GetType() == ActionType.MOVE:
             player.Move(action.GetData())
+        if action.GetType() == ActionType.LOOK:
+            print(room.Describe())
 
 
 if __name__ == "__main__":
