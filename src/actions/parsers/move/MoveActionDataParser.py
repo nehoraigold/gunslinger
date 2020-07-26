@@ -1,6 +1,6 @@
 import typing
 from src.actions.parsers.abstract.IActionDataParser import IActionDataParser
-from src.actions.parsers.move.MoveDirection import MoveDirection
+from src.actions.data_types.move.MoveDirection import MoveDirection
 from src.utils.ParseException import ParseException
 
 

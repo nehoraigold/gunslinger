@@ -1,6 +1,6 @@
 import typing
 from src.actions.ActionType import ActionType
-from src.actions.parsers.move.MoveDirection import MoveDirection
+from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
 class Action:

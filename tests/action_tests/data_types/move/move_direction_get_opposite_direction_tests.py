@@ -1,5 +1,5 @@
 import unittest
-from src.actions.parsers.move.MoveDirection import MoveDirection
+from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
 class MoveDirectionGetOppositeDirectionTests(unittest.TestCase):
