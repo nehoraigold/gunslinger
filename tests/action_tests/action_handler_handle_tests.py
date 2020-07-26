@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import MagicMock
 from src.actions.ActionHandler import ActionHandler, World, Player, Room, Action, ActionType, MoveDirection
 
 

@@ -19,10 +19,14 @@ class ActionTests(unittest.TestCase):
 
         self.assertEqual(action.GetData(), action_data)
 
-    def test_get_move_direction_data(self):
+    def test_get_move_action_data(self):
         action_type = ActionType.MOVE
         action_data = MoveDirection.LEFT
 
         action = Action(action_type, action_data)
 
         self.assertEqual(action.GetData(), action_data)
+
+    def test_get_look_action_data(self):
+        action = Action(ActionType.LOOK)
+        self.assertIsNone(action.GetData())
