@@ -3,7 +3,7 @@ import json
 from os import path
 
 
-def load_csv(file_path: str):
+def LoadCSV(file_path: str):
     if not path.isfile(file_path):
         raise FileNotFoundError("Could not load CSV file {}".format(file_path))
     with open(file_path) as csv_file:
@@ -12,13 +12,13 @@ def load_csv(file_path: str):
             yield row
 
 
-def load_json(file_path: str):
+def LoadJSON(file_path: str):
     if not path.isfile(file_path):
         raise FileNotFoundError("Could not load JSON file {}".format(file_path))
     return json.load(open(file_path))
 
 
-def format_to_header(title: str) -> str:
+def FormatToHeader(title: str) -> str:
     if title is None or len(title) == 0:
         return ""
 

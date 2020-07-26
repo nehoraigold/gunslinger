@@ -21,7 +21,7 @@ class Room:
         self.description = description
 
     def get_name(self) -> str:
-        return "{}\n".format(utils.format_to_header(self.name))
+        return "{}\n".format(utils.FormatToHeader(self.name))
 
     def get_description(self) -> str:
         return "{}\n".format(self.description) if self.description is not None and len(self.description) > 0 else ""

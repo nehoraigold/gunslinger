@@ -17,18 +17,18 @@ class LoadJSONTests(unittest.TestCase):
     def test_load_empty_file_path(self):
         json_file_path = ""
         with self.assertRaises(FileNotFoundError):
-            utils.load_json(json_file_path)
+            utils.LoadJSON(json_file_path)
 
     def test_load_invalid_json_file(self):
         json_file_path = "invalid/path/to/file.json"
         with self.assertRaises(FileNotFoundError):
-            utils.load_json(json_file_path)
+            utils.LoadJSON(json_file_path)
 
     def test_load_valid_json(self):
         json_file_path = "tests/utils_tests/valid.json"
         json_data = {"A": 1, "B": "Hello", "C": {"X": "Y", "Z": [1, 2, 3]}}
         create_json_file(json_file_path, json_data)
 
-        self.assertEqual(json_data, utils.load_json(json_file_path))
+        self.assertEqual(json_data, utils.LoadJSON(json_file_path))
 
         delete_json_file(json_file_path)
