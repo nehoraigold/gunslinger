@@ -1,8 +1,9 @@
 import unittest
-from src.actions.handlers.ActionHandler import ActionHandler, World, Player, Room, Action, ActionType, MoveDirection
+from src.actions.Action import ActionType, Action
+from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player, Room, MoveDirection
 
 
-class ActionHandlerHandleTests(unittest.TestCase):
+class MoveActionHandlerHandleTests(unittest.TestCase):
     def setUp(self) -> None:
         self.player = Player()
         self.world = World()
@@ -13,13 +14,13 @@ class ActionHandlerHandleTests(unittest.TestCase):
             (1, 1): Room("Room 4", "This is room 4.")
         }
 
-        self.handler = ActionHandler(self.world, self.player)
+        self.move_action_handler = MoveActionHandler(self.world, self.player)
 
     def test_handle_valid_move_action(self):
         pre_move_room = self.world.GetRoom(self.player.GetLocation())
 
         action = Action(ActionType.MOVE, MoveDirection.DOWN)
-        self.handler.Handle(action, pre_move_room)
+        self.move_action_handler.Handle(action, pre_move_room)
         post_move_room = self.world.GetRoom(self.player.GetLocation())
 
         self.assertNotEqual(pre_move_room, post_move_room)
@@ -28,7 +29,7 @@ class ActionHandlerHandleTests(unittest.TestCase):
         pre_move_room = self.world.GetRoom(self.player.GetLocation())
 
         action = Action(ActionType.MOVE, MoveDirection.UP)
-        self.handler.Handle(action, pre_move_room)
+        self.move_action_handler.Handle(action, pre_move_room)
         post_move_room = self.world.GetRoom(self.player.GetLocation())
 
         self.assertEqual(pre_move_room, post_move_room)

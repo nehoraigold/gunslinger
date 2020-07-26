@@ -1,16 +1,14 @@
-import typing
-from src.Player import Player, MoveDirection
-from src.World import World, Room
 from src.actions.Action import Action, ActionType
+from src.actions.handlers.abstract.IActionHandler import IActionHandler, Room
+from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player
+from src.actions.handlers.look.LookActionHandler import LookActionHandler
 
 
-class ActionHandler:
+class ActionHandler(metaclass=IActionHandler):
     def __init__(self, world: World, player: Player):
-        self.world = world
-        self.player = player
         self.switcher = {
-            ActionType.MOVE: self.handle_move,
-            ActionType.LOOK: self.handle_look
+            ActionType.MOVE: MoveActionHandler(world, player),
+            ActionType.LOOK: LookActionHandler()
         }
 
     def Handle(self, action: Action, current_room: Room) -> None:
@@ -18,18 +16,4 @@ class ActionHandler:
             return
         handler = self.switcher.get(action.GetType(), None)
         if handler is not None:
-            handler(action, current_room)
-
-    def handle_move(self, action: Action, old_room: Room) -> None:
-        self.player.Move(action.GetData())
-        new_room = self.world.GetRoom(self.player.GetLocation())
-        if new_room is None:
-            opposite_direction = MoveDirection.GetOppositeDirection(action.GetData())
-            self.player.Move(opposite_direction)
-            new_room = old_room
-        if new_room != old_room:
-            print(new_room.Visit())
-
-    @staticmethod
-    def handle_look(action: Action, current_room: Room) -> None:
-        print(current_room.Describe())
+            handler.Handle(action, current_room)
