@@ -1,6 +1,6 @@
 import typing
-from src.actions.abstract.IActionDataFactory import IActionDataFactory
-from src.actions.move.MoveDirection import MoveDirection
+from src.actions.action_data.abstract.IActionDataFactory import IActionDataFactory
+from src.actions.action_data.move.MoveDirection import MoveDirection
 from src.utils.ParseException import ParseException
 
 

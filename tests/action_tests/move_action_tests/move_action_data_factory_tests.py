@@ -1,5 +1,5 @@
 import unittest
-from src.actions.move.MoveActionDataFactory import MoveActionDataFactory, MoveDirection, ParseException
+from src.actions.action_data.move.MoveActionDataFactory import MoveActionDataFactory, MoveDirection, ParseException
 
 
 class MoveActionDataFactoryCreateDataTests(unittest.TestCase):

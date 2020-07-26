@@ -8,5 +8,5 @@ class IActionDataFactory(ABCMeta):
         raise NotImplementedError
 
     @staticmethod
-    def CreateData(string: str):
+    def CreateData(string: str) -> any:
         raise NotImplementedError
