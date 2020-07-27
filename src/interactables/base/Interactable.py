@@ -32,7 +32,7 @@ class Interactable:
     def Interact(self, interaction: str) -> str:
         return self.interactions.get(interaction, "You cannot {} the {}.".format(interaction, self.name))
 
-    def IsTakeable(self):
+    def IsTakeable(self) -> bool:
         return False
 
     def __repr__(self):
