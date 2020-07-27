@@ -1,3 +1,4 @@
+import typing
 import csv
 import json
 from os import path
@@ -30,3 +31,7 @@ def FormatToHeader(title: str) -> str:
     horizontal_bar = CORNER_BORDER + (HORIZONTAL_BORDER * (2 * BUFFER_SIZE + len(title))) + CORNER_BORDER
     middle_bar = VERTICAL_BORDER + (" " * BUFFER_SIZE) + title + (" " * BUFFER_SIZE) + VERTICAL_BORDER
     return "{}\n{}\n{}".format(horizontal_bar, middle_bar, horizontal_bar)
+
+
+def AddCoordinates(*coordinates: typing.Tuple[int, int]) -> typing.Tuple[int, int]:
+    return tuple([sum(x) for x in zip(*coordinates)])
