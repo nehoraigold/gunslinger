@@ -1,7 +1,7 @@
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, Room
-from src.actions.data_types.move.MoveDirection import MoveDirection
 from src.World import World
 from src.Player import Player
+from src.utils import utils
 
 
 class MoveActionHandler(metaclass=IActionHandler):
@@ -9,12 +9,15 @@ class MoveActionHandler(metaclass=IActionHandler):
         self.world = world
         self.player = player
 
-    def Handle(self, action: Action, old_room: Room) -> None:
-        self.player.Move(action.GetData())
-        new_room = self.world.GetRoom(self.player.GetLocation())
-        if new_room is None:
-            opposite_direction = MoveDirection.GetOppositeDirection(action.GetData())
-            self.player.Move(opposite_direction)
-            new_room = old_room
-        if new_room != old_room:
+    def Handle(self, action: Action, room: Room) -> None:
+        blocker = room.GetBlocker(action.GetData())
+        if blocker is not None:
+            print(blocker.GetBlockMessage())
+            return
+        new_room = self.get_new_room(action)
+        if new_room is not None:
+            self.player.Move(action.GetData())
             print(new_room.Visit())
+
+    def get_new_room(self, action: Action):
+        return self.world.GetRoom(utils.AddCoordinates(self.player.GetLocation(), action.GetData().value))

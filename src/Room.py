@@ -1,4 +1,7 @@
+import typing
 from src.utils import utils
+from src.actions.data_types.move.MoveDirection import MoveDirection
+from src.interactables.blockers.Blocker import Blocker
 
 
 class Room:
@@ -6,6 +9,7 @@ class Room:
         self.name = name
         self.description = description
         self.has_visited = False
+        self.blockers = {}
 
     def Visit(self) -> str:
         visit_description = self.get_name()
@@ -17,8 +21,14 @@ class Room:
     def Describe(self) -> str:
         return self.get_description()
 
-    def SetDescription(self, description: str):
+    def SetDescription(self, description: str) -> None:
         self.description = description
+
+    def GetBlocker(self, direction: MoveDirection) -> typing.Union[None, Blocker]:
+        return self.blockers.get(direction, None)
+
+    def AddBlocker(self, direction: MoveDirection, blocker: Blocker) -> None:
+        self.blockers[direction] = blocker
 
     def get_name(self) -> str:
         return "{}\n".format(utils.FormatToHeader(self.name))

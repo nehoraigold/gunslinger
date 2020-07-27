@@ -1,6 +1,8 @@
 import unittest
 from src.actions.Action import ActionType, Action
-from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player, Room, MoveDirection
+from src.actions.data_types.move.MoveDirection import MoveDirection
+from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player
+from src.Room import Room, Blocker
 
 
 class MoveActionHandlerHandleTests(unittest.TestCase):
@@ -17,19 +19,48 @@ class MoveActionHandlerHandleTests(unittest.TestCase):
         self.move_action_handler = MoveActionHandler(self.world, self.player)
 
     def test_handle_valid_move_action(self):
-        pre_move_room = self.world.GetRoom(self.player.GetLocation())
+        initial_location = self.player.GetLocation()
 
         action = Action(ActionType.MOVE, MoveDirection.DOWN)
-        self.move_action_handler.Handle(action, pre_move_room)
-        post_move_room = self.world.GetRoom(self.player.GetLocation())
+        self.move_action_handler.Handle(action, self.world.GetRoom(initial_location))
 
-        self.assertNotEqual(pre_move_room, post_move_room)
+        ending_location = self.player.GetLocation()
+        self.assertNotEqual(initial_location, ending_location)
 
-    def test_handle_invalid_move_action(self):
-        pre_move_room = self.world.GetRoom(self.player.GetLocation())
+    def test_handle_no_adjacent_room(self):
+        initial_location = self.player.GetLocation()
 
         action = Action(ActionType.MOVE, MoveDirection.UP)
-        self.move_action_handler.Handle(action, pre_move_room)
-        post_move_room = self.world.GetRoom(self.player.GetLocation())
+        self.move_action_handler.Handle(action, self.world.GetRoom(initial_location))
 
-        self.assertEqual(pre_move_room, post_move_room)
+        ending_location = self.player.GetLocation()
+        self.assertEqual(initial_location, ending_location)
+
+    def test_handle_unable_to_move_in_room_with_blocker(self):
+        initial_location = self.player.GetLocation()
+        room = self.world.GetRoom(initial_location)
+
+        blocker = Blocker("wall", "It's a normal, nondescript wall.")
+        direction = MoveDirection.DOWN
+        room.AddBlocker(direction, blocker)
+
+        action = Action(ActionType.MOVE, direction)
+
+        self.move_action_handler.Handle(action, room)
+
+        ending_location = self.player.GetLocation()
+        self.assertEqual(initial_location, ending_location)
+
+    def test_handle_able_to_move_in_room_with_blocker_in_different_direction(self):
+        initial_location = self.player.GetLocation()
+        room = self.world.GetRoom(initial_location)
+
+        blocker = Blocker("wall", "It's a normal, nondescript wall.")
+        room.AddBlocker(MoveDirection.DOWN, blocker)
+
+        action = Action(ActionType.MOVE, MoveDirection.RIGHT)
+
+        self.move_action_handler.Handle(action, room)
+
+        ending_location = self.player.GetLocation()
+        self.assertNotEqual(initial_location, ending_location)
