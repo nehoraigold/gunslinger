@@ -1,9 +1,10 @@
 import typing
+from src.utils import utils
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
 class Player:
-    def __init__(self, starting_location: typing.Tuple[int, int] = (0, 0), name: str = "Roland",):
+    def __init__(self, starting_location: typing.Tuple[int, int] = (0, 0), name: str = "Roland"):
         self.name = name
         self.coordinate = starting_location
 
@@ -11,4 +12,4 @@ class Player:
         return self.coordinate
 
     def Move(self, direction: MoveDirection) -> None:
-        self.coordinate = (self.coordinate[0] + direction.value[0], self.coordinate[1] + direction.value[1])
+        self.coordinate = utils.AddCoordinates(self.coordinate, direction.value)
