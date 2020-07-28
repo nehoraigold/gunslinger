@@ -2,7 +2,7 @@ from src.interactables.base.Interactable import Interactable
 
 
 class Blocker(Interactable):
-    DEFAULT_BLOCK_MESSAGE = "There is something in your way."
+    DEFAULT_BLOCK_MESSAGE = "You can't go that way."
 
     def __init__(self, name: str, description: str = None, block_message: str = DEFAULT_BLOCK_MESSAGE):
         super().__init__(name, description)
@@ -13,6 +13,3 @@ class Blocker(Interactable):
 
     def GetBlockMessage(self) -> str:
         return self.block_message
-
-    def IsDestructible(self) -> bool:
-        return False

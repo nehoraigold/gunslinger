@@ -1,8 +1,12 @@
 import unittest
-from src.interactables.blockers.Blocker import Blocker
+from src.interactables.blockers.Blocker import Blocker, Interactable
 
 
 class BlockerBasicFunctionsTests(unittest.TestCase):
+    def test_blocker_is_of_type_interactable(self):
+        blocker = Blocker("wall")
+        self.assertTrue(isinstance(blocker, Interactable))
+
     def test_get_block_message_returns_default_block_message(self):
         blocker = Blocker("wall")
         self.assertEqual(blocker.GetBlockMessage(), Blocker.DEFAULT_BLOCK_MESSAGE)
@@ -17,7 +21,3 @@ class BlockerBasicFunctionsTests(unittest.TestCase):
         blocker = Blocker("wall")
         blocker.SetBlockMessage(custom_block_message)
         self.assertEqual(blocker.GetBlockMessage(), custom_block_message)
-
-    def test_is_destructible_returns_false_by_default(self):
-        blocker = Blocker("wall")
-        self.assertFalse(blocker.IsDestructible())
