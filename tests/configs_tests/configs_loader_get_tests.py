@@ -10,7 +10,7 @@ class ConfigsLoaderGetTests(unittest.TestCase):
             "mapFilePath": "csv/map.csv",
             "roomFilePath": "csv/rooms.csv",
             "objectsFilePath": "csv/objects.csv"}
-        self.json_file_name = "tests/configs_loader_tests/configs.json"
+        self.json_file_name = "tests/configs_tests/configs.json"
         create_json_file(self.json_file_name, self.data)
         self.configs_loader = ConfigsLoader(self.json_file_name)
         delete_json_file(self.json_file_name)
