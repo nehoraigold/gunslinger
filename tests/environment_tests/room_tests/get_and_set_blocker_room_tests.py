@@ -1,5 +1,5 @@
 import unittest
-from src.room.Room import Room, Blocker, MoveDirection
+from src.environment.Room import Room, Blocker, MoveDirection
 
 
 class RoomGetAndSetBlockerTests(unittest.TestCase):

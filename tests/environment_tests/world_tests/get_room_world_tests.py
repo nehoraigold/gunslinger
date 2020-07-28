@@ -1,18 +1,19 @@
 import unittest
-from src.world.World import World
+import os
+from src.environment.World import World
 from tests.utils_tests.load_csv_tests import create_csv_file, delete_csv_file
 
 
 class WorldGetRoomTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.map_file_path = "tests/world_tests/world_map.csv"
-        self.room_descriptions_file_path = "tests/world_tests/room_desc.csv"
+        self.map_file_path = str(os.path.join(os.getcwd(), "world_map.csv"))
+        self.room_descriptions_file_path = str(os.path.join(os.getcwd(), "room_desc.csv"))
         self.map_data = [["Room1", "Room2"],
                          ["Room3", "Room4"]]
-        self.room_descriptions_data = [["Room1", "Description for room 1."],
-                                       ["Room2", "Description for room 2."],
-                                       ["Room3", "Description for room 3."],
-                                       ["Room4", "Description for room 4."]]
+        self.room_descriptions_data = [["Room1", "Description for environment 1."],
+                                       ["Room2", "Description for environment 2."],
+                                       ["Room3", "Description for environment 3."],
+                                       ["Room4", "Description for environment 4."]]
         create_csv_file(self.map_file_path, self.map_data)
         create_csv_file(self.room_descriptions_file_path, self.room_descriptions_data)
 

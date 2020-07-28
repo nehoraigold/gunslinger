@@ -1,5 +1,5 @@
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, Room
-from src.world.World import World
+from src.environment.World import World
 from src.Player import Player
 from src.utils import utils
 

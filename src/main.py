@@ -1,4 +1,4 @@
-from src.world.World import World
+from src.environment.World import World
 from src.Player import Player
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.actions.parsers.ActionParser import ActionParser, ParseException

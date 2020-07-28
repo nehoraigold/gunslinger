@@ -2,7 +2,7 @@ import unittest
 from src.actions.Action import ActionType, Action
 from src.actions.data_types.move.MoveDirection import MoveDirection
 from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player
-from src.room.Room import Room, Blocker
+from src.environment.Room import Room, Blocker
 
 
 class MoveActionHandlerHandleTests(unittest.TestCase):
@@ -10,10 +10,10 @@ class MoveActionHandlerHandleTests(unittest.TestCase):
         self.player = Player()
         self.world = World()
         self.world.board = {
-            (0, 0): Room("Room 1", "This is room 1."),
-            (1, 0): Room("Room 2", "This is room 2."),
-            (0, 1): Room("Room 3", "This is room 3."),
-            (1, 1): Room("Room 4", "This is room 4.")
+            (0, 0): Room("Room 1", "This is environment 1."),
+            (1, 0): Room("Room 2", "This is environment 2."),
+            (0, 1): Room("Room 3", "This is environment 3."),
+            (1, 1): Room("Room 4", "This is environment 4.")
         }
 
         self.move_action_handler = MoveActionHandler(self.world, self.player)

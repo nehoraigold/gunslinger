@@ -1,6 +1,6 @@
 import typing
 from src.utils import utils
-from src.room.abstract.IRoom import IRoom, MoveDirection, Blocker
+from src.environment.abstract.IRoom import IRoom, MoveDirection, Blocker
 
 
 class Room(IRoom):

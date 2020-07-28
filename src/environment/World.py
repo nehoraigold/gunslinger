@@ -1,5 +1,5 @@
 import typing
-from src.world.abstract.IWorld import IWorld, Room
+from src.environment.abstract.IWorld import IWorld, Room
 from src.utils import utils
 
 
