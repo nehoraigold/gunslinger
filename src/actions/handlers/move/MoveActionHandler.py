@@ -4,7 +4,7 @@ from src.Player import Player
 from src.utils import utils
 
 
-class MoveActionHandler(metaclass=IActionHandler):
+class MoveActionHandler(IActionHandler):
     def __init__(self, world: World, player: Player):
         self.world = world
         self.player = player

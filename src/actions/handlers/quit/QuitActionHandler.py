@@ -2,7 +2,7 @@ from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action,
 from sys import exit
 
 
-class QuitActionHandler(metaclass=IActionHandler):
+class QuitActionHandler(IActionHandler):
     AFFIRMATIVES = ["yes", "y"]
 
     def Handle(self, action: Action, room: Room):
