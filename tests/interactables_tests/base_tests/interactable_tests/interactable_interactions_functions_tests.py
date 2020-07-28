@@ -7,7 +7,15 @@ class InteractableInteractionFunctionsTests(unittest.TestCase):
         description = "An old, worn-out piano."
         interactable = Interactable("piano", description)
 
-        self.assertEqual(interactable.Interact("examine"), description)
+        self.assertEqual(interactable.Interact(Interactable.EXAMINE_INTERACTION), description)
+
+    def test_default_examine_interaction_should_return_description_after_set(self):
+        interactable = Interactable("piano")
+
+        description = "An old, worn-out piano."
+        interactable.SetDescription(description)
+
+        self.assertEqual(interactable.Interact(Interactable.EXAMINE_INTERACTION), description)
 
     def test_get_interaction_that_is_not_present(self):
         name = "piano"

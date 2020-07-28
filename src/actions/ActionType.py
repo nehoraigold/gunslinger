@@ -7,6 +7,7 @@ class ActionType(enum.Enum):
     TAKE = "TAKE"
     DROP = "DROP"
     SPEAK = "SPEAK"
+    UNLOCK = "UNLOCK"
     INTERACTION = "INTERACTION"
     INVENTORY = "INVENTORY"
     HELP = "HELP"
