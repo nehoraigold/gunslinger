@@ -1,5 +1,5 @@
 import unittest
-from src.World import World
+from src.world.World import World
 from tests.utils_tests.load_csv_tests import create_csv_file, delete_csv_file
 
 

@@ -1,9 +1,9 @@
 import typing
-from src.Room import Room
+from src.world.abstract.IWorld import IWorld, Room
 from src.utils import utils
 
 
-class World:
+class World(IWorld):
     def __init__(self, map_csv_file_path: str = None, room_descriptions_csv_file_path: str = None):
         self.board = self.load_board_from_csv(map_csv_file_path) if map_csv_file_path is not None else {}
         self.initialize_rooms(room_descriptions_csv_file_path)
@@ -23,5 +23,5 @@ class World:
                     room.SetDescription(row[ROOM_DESCRIPTION_INDEX])
                     break
 
-    def GetRoom(self, coordinate: typing.Tuple[int, int]) -> Room:
+    def GetRoom(self, coordinate: typing.Tuple[int, int]) -> typing.Union[None, Room]:
         return self.board.get(coordinate, None)

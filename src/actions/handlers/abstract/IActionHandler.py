@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from src.actions.Action import Action
-from src.World import Room
+from src.world.World import Room
 
 
 class IActionHandler(ABCMeta):
