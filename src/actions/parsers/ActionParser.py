@@ -1,8 +1,8 @@
 from src.actions.parsers.move.MoveActionParser import MoveActionParser
 from src.actions.parsers.look.LookActionParser import LookActionParser
 from src.actions.parsers.quit.QuitActionParser import QuitActionParser
+from src.actions.parsers.ParseException import ParseException
 from src.actions.Action import Action, ActionType
-from src.utils.ParseException import ParseException
 
 
 class ActionParser:

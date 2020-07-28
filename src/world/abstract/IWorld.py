@@ -1,6 +1,6 @@
 import typing
 from abc import ABCMeta, abstractmethod
-from src.Room import Room
+from src.room.Room import Room
 
 
 class IWorld(metaclass=ABCMeta):

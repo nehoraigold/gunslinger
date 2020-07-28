@@ -1,7 +1,7 @@
 import typing
 from src.actions.parsers.abstract.IActionParser import IActionParser
 from src.actions.data_types.move.MoveDirection import MoveDirection
-from src.utils.ParseException import ParseException
+from src.actions.parsers.ParseException import ParseException
 
 
 class MoveActionParser(IActionParser):

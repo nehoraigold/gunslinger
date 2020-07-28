@@ -1,5 +1,5 @@
 import unittest
-from src.Room import Room
+from src.room.Room import Room
 
 
 class SetDescriptionRoomTests(unittest.TestCase):

@@ -1,5 +1,5 @@
 import unittest
-from src.configs_loader.ConfigsLoader import ConfigsLoader
+from src.configs.ConfigsLoader import ConfigsLoader
 from tests.utils_tests.load_json_tests import create_json_file, delete_json_file
 
 

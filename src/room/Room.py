@@ -1,10 +1,9 @@
 import typing
 from src.utils import utils
-from src.actions.data_types.move.MoveDirection import MoveDirection
-from src.interactables.blockers.Blocker import Blocker
+from src.room.abstract.IRoom import IRoom, MoveDirection, Blocker
 
 
-class Room:
+class Room(IRoom):
     def __init__(self, name: str, description: str = None):
         self.name = name
         self.description = description
