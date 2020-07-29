@@ -13,24 +13,14 @@ class InteractableBasicFunctionsTests(unittest.TestCase):
         interactable = Interactable(normal_string)
         self.assertEqual(interactable.GetName(), normal_string)
 
-    def test_get_description_empty_string(self):
-        empty_string = ""
-        interactable = Interactable("piano", empty_string)
-        self.assertEqual(interactable.GetDescription(), empty_string)
+    def test_string_repr_returns_name(self):
+        name = "piano"
+        interactable = Interactable(name)
+        self.assertEqual(str(interactable), name)
 
-    def test_get_description_normal_string(self):
-        normal_string = "An old, worn-out piano."
-        interactable = Interactable("piano", normal_string)
-        self.assertEqual(interactable.GetDescription(), normal_string)
-
-    def test_set_description_empty_string(self):
-        description = "An old, worn-out piano."
-        interactable = Interactable("piano", description)
-
-        empty_string = ""
-        interactable.SetDescription(empty_string)
-
-        self.assertEqual(interactable.GetDescription(), empty_string)
+    def test_get_description_default_value_is_empty_string(self):
+        interactable = Interactable("piano")
+        self.assertEqual(interactable.GetDescription(), "")
 
     def test_set_description_normal_string(self):
         interactable = Interactable("piano")

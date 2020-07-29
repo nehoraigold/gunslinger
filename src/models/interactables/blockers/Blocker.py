@@ -4,9 +4,9 @@ from src.models.interactables.Interactable import Interactable
 class Blocker(Interactable):
     DEFAULT_BLOCK_MESSAGE = "You can't go that way."
 
-    def __init__(self, name: str, description: str = None, block_message: str = DEFAULT_BLOCK_MESSAGE):
-        super().__init__(name, description)
-        self.block_message = block_message
+    def __init__(self, name: str):
+        super().__init__(name)
+        self.block_message = self.DEFAULT_BLOCK_MESSAGE
 
     def SetBlockMessage(self, block_message: str) -> None:
         self.block_message = block_message

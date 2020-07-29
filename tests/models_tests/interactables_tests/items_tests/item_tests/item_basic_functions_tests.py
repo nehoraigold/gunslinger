@@ -8,13 +8,8 @@ class ItemBasicFunctionsTests(unittest.TestCase):
         item = Item("water canteen")
         self.assertEqual(item.GetValue(), default_value)
 
-    def test_get_value_set_in_constructor(self):
-        value = 15
-        item = Item("water canteen", "A weathered rawhide canteen for holding water.", value)
-        self.assertEqual(item.GetValue(), value)
-
     def test_set_value_returns_newly_set_value(self):
-        item = Item("water canteen", "A weathered rawhide canteen for holding water.", 15)
+        item = Item("water canteen")
 
         new_value = 20
         item.SetValue(new_value)
@@ -22,5 +17,5 @@ class ItemBasicFunctionsTests(unittest.TestCase):
         self.assertEqual(item.GetValue(), new_value)
 
     def test_is_takeable_always_returns_true(self):
-        item = Item("water canteen", "A weathered rawhide canteen for holding water.")
+        item = Item("water canteen")
         self.assertTrue(item.IsTakeable())

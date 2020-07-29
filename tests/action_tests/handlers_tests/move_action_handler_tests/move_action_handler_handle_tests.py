@@ -40,7 +40,7 @@ class MoveActionHandlerHandleTests(unittest.TestCase):
         initial_location = self.player.GetLocation()
         room = self.world.GetRoom(initial_location)
 
-        blocker = Blocker("wall", "It's a normal, nondescript wall.")
+        blocker = Blocker("wall")
         direction = MoveDirection.DOWN
         room.AddBlocker(direction, blocker)
 
@@ -55,7 +55,7 @@ class MoveActionHandlerHandleTests(unittest.TestCase):
         initial_location = self.player.GetLocation()
         room = self.world.GetRoom(initial_location)
 
-        blocker = Blocker("wall", "It's a normal, nondescript wall.")
+        blocker = Blocker("wall")
         room.AddBlocker(MoveDirection.DOWN, blocker)
 
         action = Action(ActionType.MOVE, MoveDirection.RIGHT)

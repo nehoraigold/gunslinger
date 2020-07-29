@@ -2,9 +2,9 @@ from src.models.interactables.Interactable import Interactable
 
 
 class Item(Interactable):
-    def __init__(self, name: str, description: str = None, value: int = 0):
-        super().__init__(name, description)
-        self.value = value
+    def __init__(self, name: str):
+        super().__init__(name)
+        self.value = 0
 
     def GetValue(self) -> int:
         return self.value

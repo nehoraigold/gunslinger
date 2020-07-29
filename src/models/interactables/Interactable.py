@@ -9,9 +9,9 @@ class Interactable:
     def GetInteractionNotFoundDescription(interaction: str, interactable: "Interactable") -> str:
         return Interactable.INTERACTION_NOT_FOUND_DESCRIPTION.format(interaction, str(interactable))
 
-    def __init__(self, name: str, description: str = None):
+    def __init__(self, name: str):
         self.name = name
-        self.description = description
+        self.description = ""
         self.alternative_names = []
         self.interactions = {
             self.EXAMINE_INTERACTION: self.description
