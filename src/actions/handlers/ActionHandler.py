@@ -5,7 +5,7 @@ from src.actions.handlers.look.LookActionHandler import LookActionHandler
 from src.actions.handlers.quit.QuitActionHandler import QuitActionHandler
 
 
-class ActionHandler(metaclass=IActionHandler):
+class ActionHandler(IActionHandler):
     def __init__(self, world: World, player: Player):
         self.switcher = {
             ActionType.MOVE: MoveActionHandler(world, player),
