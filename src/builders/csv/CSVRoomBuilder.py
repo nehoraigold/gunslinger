@@ -1,6 +1,6 @@
 import typing
 from src.builders.abstract.IBuilder import IBuilder
-from src.models.environment.Room import Room, MoveDirection, Blocker
+from src.models.environment.Room import Room, MoveDirection
 from src.utils import utils
 
 
@@ -24,18 +24,19 @@ class CSVRoomBuilder(IBuilder):
             if room_name == row[self.NAME_INDEX]:
                 return self.get_room_from_row(row)
 
-    def get_room_from_row(self, room: Room, row: typing.List[str]) -> Room:
-        self.set_room_description(room, row)
+    def get_room_from_row(self, row: typing.List[str]) -> Room:
+        room = Room(row[self.NAME_INDEX])
+        self.set_room_description(room, row[self.DESCRIPTION_INDEX])
         self.set_room_blockers(room, row)
         return room
 
-    def set_room_description(self, room: Room, row: typing.List[str]) -> None:
-        description = row[self.DESCRIPTION_INDEX].strip()
+    def set_room_description(self, room: Room, description: str) -> None:
+        description = description.strip()
         if len(description) != 0:
             room.SetDescription(description)
 
     def set_room_blockers(self, room: Room, row: typing.List[str]) -> None:
         for direction, index in self.BLOCKER_INDICES.items():
             if len(row[index].strip()) != 0:
-                blocker = self.blocker_builder.BuildBlocker(Blocker(row[index]))
+                blocker = self.blocker_builder.Build(row[index])
                 room.AddBlocker(direction, blocker)

@@ -8,14 +8,12 @@ from src.models.environment.Room import Room, Blocker
 class MoveActionHandlerHandleTests(unittest.TestCase):
     def setUp(self) -> None:
         self.player = Player()
-        self.world = World()
-        self.world.board = {
+        self.world = World({
             (0, 0): Room("Room 1", "This is room 1."),
             (1, 0): Room("Room 2", "This is room 2."),
             (0, 1): Room("Room 3", "This is room 3."),
             (1, 1): Room("Room 4", "This is room 4.")
-        }
-
+        })
         self.move_action_handler = MoveActionHandler(self.world, self.player)
 
     def test_handle_valid_move_action(self):

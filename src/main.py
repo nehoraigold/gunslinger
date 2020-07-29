@@ -3,11 +3,13 @@ from src.Player import Player
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.actions.parsers.ActionParser import ActionParser, ParseException
 from src.actions.handlers.ActionHandler import ActionHandler
+from src.builders import BuilderFactory
 
 
 def main():
     configs = ConfigsLoader("config.json")
-    world = World(configs.Get("mapFilePath"), configs.Get("roomFilePath"))
+    world_builder = BuilderFactory.Create(configs, World)
+    world = world_builder.Build()
     player = Player((1, 6))
     action_handler = ActionHandler(world, player)
     room = world.GetRoom(player.GetLocation())
