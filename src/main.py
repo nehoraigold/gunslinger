@@ -3,13 +3,12 @@ from src.Player import Player
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.actions.parsers.ActionParser import ActionParser, ParseException
 from src.actions.handlers.ActionHandler import ActionHandler
-from src.builders import BuilderFactory
+from src.builders.WorldBuilder import BuildWorld
 
 
 def main():
     configs = ConfigsLoader("config.json")
-    world_builder = BuilderFactory.Create(configs, World)
-    world = world_builder.Build()
+    world = BuildWorld(configs)
     player = Player((1, 6))
     action_handler = ActionHandler(world, player)
     room = world.GetRoom(player.GetLocation())
@@ -18,8 +17,8 @@ def main():
         try:
             action = ActionParser.Parse(input())
         except ParseException:
-            print("Invalid action.")
-            action = None
+            print("Invalid action.\n")
+            continue
         print()
         action_handler.Handle(action, room)
         room = world.GetRoom(player.GetLocation())

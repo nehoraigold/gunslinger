@@ -7,7 +7,12 @@ from src.builders.csv.CSVInteractableBuilder import Interactable, CSVInteractabl
 from src.builders.csv.CSVWorldBuilder import World, CSVWorldBuilder
 
 
-def Create(configs: ConfigsLoader, builder_type: typing.Type) -> IBuilder:
+def BuildWorld(configs: ConfigsLoader) -> World:
+    world_builder = create_builder(configs, World)
+    return world_builder.Build()
+
+
+def create_builder(configs: ConfigsLoader, builder_type: typing.Type) -> IBuilder:
     return SWITCHER.get(builder_type)(configs)
 
 
@@ -15,14 +20,14 @@ def create_world_builder(configs: ConfigsLoader) -> IBuilder:
     file_path = configs.Get("worldFilePath")
     for pattern, builder in WORLD_BUILDERS.items():
         if re.search(pattern, file_path):
-            return builder(file_path, Create(configs, Room))
+            return builder(file_path, create_builder(configs, Room))
 
 
 def create_room_builder(configs: ConfigsLoader) -> IBuilder:
     file_path = configs.Get("roomFilePath")
     for pattern, builder in ROOM_BUILDERS.items():
         if re.search(pattern, file_path):
-            return builder(file_path, Create(configs, Blocker))
+            return builder(file_path, create_builder(configs, Blocker))
 
 
 def create_blocker_builder(configs: ConfigsLoader) -> IBuilder:
