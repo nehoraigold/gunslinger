@@ -1,6 +1,6 @@
 import unittest
 from src.configs.ConfigsLoader import ConfigsLoader
-from tests.utils_tests.load_json_tests import create_json_file, delete_json_file
+from tests.utils_tests.utils_tests.load_json_tests import create_json_file, delete_json_file
 
 
 class ConfigsLoaderGetTests(unittest.TestCase):

@@ -1,6 +1,5 @@
 import typing
 from src.models.environment.abstract.IWorld import IWorld, Room
-from src.utils import Utils
 
 
 class World(IWorld):

@@ -1,5 +1,4 @@
 import typing
-from src.utils import Utils
 from src.models.environment.abstract.IRoom import IRoom, MoveDirection, Blocker
 
 

@@ -1,6 +1,6 @@
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, Room
 from src.models.environment.World import World
-from src.Player import Player
+from src.Player import Player, MoveDirection
 from src.utils import Utils
 from src.utils import Print
 
@@ -11,15 +11,16 @@ class MoveActionHandler(IActionHandler):
         self.player = player
 
     def Handle(self, action: Action, room: Room) -> None:
-        blocker = room.GetBlocker(action.GetData())
+        direction = action.GetData()
+        blocker = room.GetBlocker(direction)
         if blocker is not None:
             Print.Message(blocker.GetBlockMessage())
             return
-        new_room = self.get_new_room(action)
+        new_room = self.get_new_room(direction)
         if new_room is not None:
-            self.player.Move(action.GetData())
+            self.player.Move(direction)
             Print.VisitTo(new_room)
             new_room.Visit()
 
-    def get_new_room(self, action: Action):
-        return self.world.GetRoom(Utils.AddCoordinates(self.player.GetLocation(), action.GetData().value))
+    def get_new_room(self, direction: MoveDirection):
+        return self.world.GetRoom(Utils.AddCoordinates(self.player.GetLocation(), direction.value))

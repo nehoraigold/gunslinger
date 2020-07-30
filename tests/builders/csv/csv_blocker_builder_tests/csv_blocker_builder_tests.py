@@ -2,7 +2,7 @@ import unittest
 import typing
 import os
 from src.builders.csv.CSVBlockerBuilder import CSVBlockerBuilder, Blocker
-from tests.utils_tests.load_csv_tests import create_csv_file, delete_csv_file
+from tests.utils_tests.utils_tests.load_csv_tests import create_csv_file, delete_csv_file
 
 
 class CSVBlockerBuilderTests(unittest.TestCase):

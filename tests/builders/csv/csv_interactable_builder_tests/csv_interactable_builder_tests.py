@@ -2,7 +2,7 @@ import unittest
 import os
 import typing
 from src.builders.csv.CSVInteractableBuilder import CSVInteractableBuilder, Interactable
-from tests.utils_tests.load_csv_tests import create_csv_file, delete_csv_file
+from tests.utils_tests.utils_tests.load_csv_tests import create_csv_file, delete_csv_file
 
 
 class CSVInteractableBuilderTests(unittest.TestCase):

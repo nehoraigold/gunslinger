@@ -10,7 +10,7 @@ def Message(message: str) -> str:
 
 def VisitTo(room: IRoom) -> str:
     message = "{}\n".format(FormatToHeader(str(room)))
-    if not room.HasVisited():
+    if not room.HasVisited() and room.GetDescription():
         message += "{}\n".format(room.GetDescription())
     print(message)
     return message
