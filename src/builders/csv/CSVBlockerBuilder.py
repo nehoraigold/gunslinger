@@ -14,8 +14,7 @@ class CSVBlockerBuilder(CSVInteractableBuilder):
                 return self.get_blocker_from_row(row)
 
     def get_blocker_from_row(self, row: typing.List[str]) -> Blocker:
-        name, description, alt_names, interactions, interaction_descriptions, block_message, \
-        lockable, starts_locked, unlock_failed_description, unlock_success_description = tuple(row)
+        name, description, alt_names, interactions, interaction_descriptions, block_message, *unlockable = tuple(row)
         blocker = Blocker(name.strip())
         self.set_description(blocker, description)
         self.set_alternative_names(blocker, alt_names)

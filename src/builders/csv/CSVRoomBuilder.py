@@ -6,14 +6,12 @@ from src.utils import utils
 
 class CSVRoomBuilder(IBuilder):
     NAME_INDEX = 0
-    DESCRIPTION_INDEX = 1
-    FIRST_TIME_EVENT_INDEX = 2
-    BLOCKER_INDICES = {
-        MoveDirection.UP: 3,
-        MoveDirection.DOWN: 4,
-        MoveDirection.LEFT: 5,
-        MoveDirection.RIGHT: 6
-    }
+    BLOCKER_ORDER = [
+        MoveDirection.UP,
+        MoveDirection.DOWN,
+        MoveDirection.LEFT,
+        MoveDirection.RIGHT
+    ]
 
     def __init__(self, csv_file_path: str, blocker_builder: IBuilder):
         self.csv_file_path = csv_file_path
@@ -25,18 +23,19 @@ class CSVRoomBuilder(IBuilder):
                 return self.get_room_from_row(row)
 
     def get_room_from_row(self, row: typing.List[str]) -> Room:
-        room = Room(row[self.NAME_INDEX])
-        self.set_room_description(room, row[self.DESCRIPTION_INDEX])
-        self.set_room_blockers(room, row)
+        name, description, first_time_event, interactables, items, *blockers = tuple(row)
+        room = Room(name)
+        self.set_room_description(room, description)
+        if any(blockers):
+            self.set_room_blockers(room, blockers)
         return room
 
     def set_room_description(self, room: Room, description: str) -> None:
-        description = description.strip()
-        if len(description) != 0:
+        if description and len(description.strip()) != 0:
             room.SetDescription(description)
 
-    def set_room_blockers(self, room: Room, row: typing.List[str]) -> None:
-        for direction, index in self.BLOCKER_INDICES.items():
-            if len(row[index].strip()) != 0:
-                blocker = self.blocker_builder.Build(row[index])
-                room.AddBlocker(direction, blocker)
+    def set_room_blockers(self, room: Room, blockers: typing.List[str]) -> None:
+        for i, blocker in enumerate(blockers):
+            if len(blocker.strip()) != 0:
+                blocker = self.blocker_builder.Build(blocker.strip())
+                room.AddBlocker(CSVRoomBuilder.BLOCKER_ORDER[i], blocker)

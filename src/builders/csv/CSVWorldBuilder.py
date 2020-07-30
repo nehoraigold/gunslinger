@@ -11,4 +11,4 @@ class CSVWorldBuilder(IBuilder):
     def Build(self, name: str = None) -> IWorld:
         return World({(i, j): self.room_builder.Build(cell.strip())
                       for j, row in enumerate(utils.LoadCSV(self.csv_file_path))
-                      for i, cell in enumerate(row)})
+                      for i, cell in enumerate(row) if cell is not None})

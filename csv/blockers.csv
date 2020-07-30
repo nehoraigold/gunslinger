@@ -3,4 +3,3 @@ wall,"It's a normal, nondescript wall.",,,,There's a wall in your way.
 door,"It's a normal, nondescript door.",,,,The door is locked.,unlock,small key,You cannot unlock the door.,You unlocked the door.
 desert,"You feel the sun's burning rays on the back of your neck. The desert stretches on as far as you can see. Even with all you've seen, you know it would be foolish to continue onward on foot.",,,,The sun's rays scald your skin. You decide to turn back.
 no mule,You aren't allowed indoors with a mule.,,,,You aren't allowed inside with a mule!,,~mule
-,,,,,,pay,1000
