@@ -1,7 +1,7 @@
 import typing
 from src.builders.abstract.IBuilder import IBuilder
 from src.models.environment.Room import Room, MoveDirection
-from src.utils import utils
+from src.utils import Utils
 
 
 class CSVRoomBuilder(IBuilder):
@@ -18,7 +18,7 @@ class CSVRoomBuilder(IBuilder):
         self.blocker_builder = blocker_builder
 
     def Build(self, room_name: str) -> Room:
-        for row in utils.LoadCSV(self.csv_file_path):
+        for row in Utils.LoadCSV(self.csv_file_path):
             if room_name == row[self.NAME_INDEX]:
                 return self.get_room_from_row(row)
 

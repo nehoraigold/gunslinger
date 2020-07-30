@@ -6,11 +6,15 @@ from src.actions.data_types.move.MoveDirection import MoveDirection
 
 class IRoom(metaclass=ABCMeta):
     @abstractmethod
-    def Visit(self) -> str:
+    def HasVisited(self) -> bool:
         raise NotImplementedError
 
     @abstractmethod
-    def Describe(self) -> str:
+    def Visit(self) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def GetDescription(self) -> str:
         raise NotImplementedError
 
     @abstractmethod

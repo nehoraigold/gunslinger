@@ -8,4 +8,4 @@ class DescribeRoomTests(unittest.TestCase):
         description = "description"
         room = Room(name, description)
 
-        self.assertTrue(description in room.Describe())
+        self.assertTrue(description in room.GetDescription())

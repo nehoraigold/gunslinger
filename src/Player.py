@@ -1,5 +1,5 @@
 import typing
-from src.utils import utils
+from src.utils import Utils
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
@@ -12,4 +12,4 @@ class Player:
         return self.coordinate
 
     def Move(self, direction: MoveDirection) -> None:
-        self.coordinate = utils.AddCoordinates(self.coordinate, direction.value)
+        self.coordinate = Utils.AddCoordinates(self.coordinate, direction.value)

@@ -1,6 +1,6 @@
 from src.builders.abstract.IBuilder import IBuilder
 from src.models.environment.World import World, IWorld
-from src.utils import utils
+from src.utils import Utils
 
 
 class CSVWorldBuilder(IBuilder):
@@ -10,5 +10,5 @@ class CSVWorldBuilder(IBuilder):
 
     def Build(self, name: str = None) -> IWorld:
         return World({(i, j): self.room_builder.Build(cell.strip())
-                      for j, row in enumerate(utils.LoadCSV(self.csv_file_path))
+                      for j, row in enumerate(Utils.LoadCSV(self.csv_file_path))
                       for i, cell in enumerate(row) if cell is not None})

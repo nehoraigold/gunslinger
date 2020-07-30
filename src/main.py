@@ -1,9 +1,9 @@
-from src.models.environment.World import World
 from src.Player import Player
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.actions.parsers.ActionParser import ActionParser, ParseException
 from src.actions.handlers.ActionHandler import ActionHandler
 from src.builders.WorldBuilder import BuildWorld
+from src.utils import Print
 
 
 def main():
@@ -12,14 +12,15 @@ def main():
     player = Player((1, 6))
     action_handler = ActionHandler(world, player)
     room = world.GetRoom(player.GetLocation())
-    print(room.Visit())
+    Print.VisitTo(room)
+    room.Visit()
     while True:
         try:
             action = ActionParser.Parse(input())
         except ParseException:
-            print("Invalid action.\n")
+            Print.Message("Invalid action.")
             continue
-        print()
+        Print.NewLine()
         action_handler.Handle(action, room)
         room = world.GetRoom(player.GetLocation())
 

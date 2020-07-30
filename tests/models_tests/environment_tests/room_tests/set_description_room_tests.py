@@ -6,11 +6,11 @@ class SetDescriptionRoomTests(unittest.TestCase):
     def test_set_description(self):
         room = Room("name")
         description = "description"
-        self.assertNotIn(description, room.Describe())
+        self.assertNotIn(description, room.GetDescription())
 
         room.SetDescription(description)
 
-        self.assertIn(description, room.Describe())
+        self.assertIn(description, room.GetDescription())
 
     def test_set_description_before_first_visit(self):
         room = Room("name")

@@ -1,7 +1,7 @@
 import typing
 from src.builders.csv.CSVInteractableBuilder import CSVInteractableBuilder
 from src.models.interactables.blockers.Blocker import Blocker
-from src.utils import utils
+from src.utils import Utils
 
 
 class CSVBlockerBuilder(CSVInteractableBuilder):
@@ -9,7 +9,7 @@ class CSVBlockerBuilder(CSVInteractableBuilder):
         super().__init__(csv_file_path)
 
     def Build(self, blocker_name: str) -> Blocker:
-        for row in utils.LoadCSV(self.csv_file_path):
+        for row in Utils.LoadCSV(self.csv_file_path):
             if blocker_name == row[self.NAME_INDEX]:
                 return self.get_blocker_from_row(row)
 

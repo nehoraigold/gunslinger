@@ -1,7 +1,7 @@
 import typing
 from src.builders.abstract.IBuilder import IBuilder
 from src.models.interactables.Interactable import Interactable
-from src.utils import utils
+from src.utils import Utils
 
 
 class CSVInteractableBuilder(IBuilder):
@@ -12,7 +12,7 @@ class CSVInteractableBuilder(IBuilder):
         self.csv_file_path = csv_file_path
 
     def Build(self, interactable_name: str) -> Interactable:
-        for row in utils.LoadCSV(self.csv_file_path):
+        for row in Utils.LoadCSV(self.csv_file_path):
             if interactable_name == row[self.NAME_INDEX]:
                 return self.get_interactable_from_row(row)
 
