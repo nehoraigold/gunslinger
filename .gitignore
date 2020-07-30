@@ -3,3 +3,5 @@
 .pydevproject
 .idea/
 **/__pycache__/
+scripts/credentials.json
+scripts/token.pickle

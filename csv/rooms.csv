@@ -1,20 +1,19 @@
-RoomName,Description,First Time Event,NPCs,Interactable,Items
-Allie's Bedroom - Upstairs,"The room is messy. Stained and tattered clothes cover the decaying wooden furniture. It smells of alcohol, lilac, and rot. You can hear the faint scratching of mice through the walls.",,,,
-Sheb's Tavern Entrance,"Half a dozen townies play cards at tipsy-legged tables, spitoons on the sawdust floor nearby. An old piano sits near the back. To the south, you see the bar.",,Nort,Piano,
-Sheb's Tavern,Four townies sit on wobbly bar stools talking amongst themselves.,,Allie,,
-West Alley,"You are at the end of a small, dark alley. In between patches of dirt, you see tufts of devil-grass growing on the ground.","You spot three children huddled together and smelling of cornshuck cigarettes. As soon as they sense you coming up to them, they run away.",,,Devil_Grass
-Church,The inside of the church has a pulpit and bare wooden pews. A few churchgoers sit solemnly with bibles in their laps.,,"Sylvia, Churchgoers",,
-North Alley,"You are at the end of the alley. Wooden fences block your way to the north and east. To the west, you see the side wall of a shack. There is no door, but you spot a window.",The window is slightly ajar.,,,
-Never-Ending Desert,"You feel the sun's burning rays on the back of your neck. The desert stretches on as far as you can see. Even with all you've seen, you know it would be foolish to continue onward on foot.",,,,
-Convenience Store,"Inside, the store is small and sparse. Behind the counter, shelves of miscellaneous items appear to be for sale.",,Shopkeep,,
-North Main Street,"The dusty road ends with a shack to the north. To the west, three kerosene lamps hang in front of a sign that says, ""Sheb's."" You can hear the faint melody of ""Hey Jude"" and grumbling conversations from within the tavern. To the east, there is a small alley.",,,,
-Northcentral Main Street,"Main Street continues north and south. To the east, you see what looks like a small inn. It likely hasn't seen a visitor in months.",,,,
-Central Main Street,"The street extends north, into town, and south, toward the entrance of Tull. To the east, you see a broken down barn. To the west, a dark alley.",,,,
-Southcentral Main Street,The main road continues north and south. The building to the west is larger than most of the other buildings in Tull. It is painted white and has a large wooden cross made of two planks of wood nailed above the door.,,,,
-South Main Street,"You see boarded-up houses to the west. The street extends north, into town, and south, out of it. A shack to the east has a broken sign in front that reads ""Convenience Store"" in old paint.",,,,
-Road into Tull,"You stand at the only entrance into the town of Tull, to the north. In all other directions, blistering, flat desert is all you can see for miles.",,,Entrance_Sign,
-Boarded-Up House,,,,,
-Local Inn,,,,,
-East Alley,,,,,
-Barn and Livery,"A single lantern's glows sunkenly, lighting up the semidark of an old barn. Haystacks sit on dusty floorboards.",,Kennerly,,
-Sylvia Pittston's Shack,"The shack is small and bare, with little furniture: a bed, a table, and two chairs. A faded rug covers the wooden floor.",,Sylvia,,
+name,description,first time description,interactable names,item names,blocker name up,blocker name down ,blocker name left,blocker name right
+Allie's Bedroom - Upstairs,"The room is messy. Stained and tattered clothes cover the decaying wooden furniture. It smells of alcohol, lilac, and rot. You can hear the faint scratching of mice through the walls.",,,,wall,,wall
+Sheb's Tavern Entrance,"Half a dozen townies play cards at tipsy-legged tables, spitoons on the sawdust floor nearby. An old piano sits near the back. To the south, you see the bar.",,old piano,,no mule,,wall
+Sheb's Tavern,Four townies sit on wobbly bar stools talking amongst themselves.,,,,,wall,wall,wall
+West Alley,"You are at the end of a small, dark alley. In between patches of dirt, you see tufts of devil-grass growing on the ground.",,,,wall,wall,wall
+Church,The inside of the church has a pulpit and bare wooden pews. A few churchgoers sit solemnly with bibles in their laps.,,,,wall,wall,wall
+North Alley,"You are at the end of the alley. Wooden fences block your way to the north and east. To the west, you see the side wall of a shack. There is no door, but you spot a window.",,,key
+Convenience Store,"Inside, the store is small and sparse. Behind the counter, shelves of miscellaneous items appear to be for sale."
+North Main Street,"The dusty road ends with a shack to the north. To the west, three kerosene lamps hang in front of a sign that says, ""Sheb's."" You can hear the faint melody of ""Hey Jude"" and grumbling conversations from within the tavern. To the east, there is a small alley."
+Northcentral Main Street,"Main Street continues north and south. To the east, you see what looks like a small inn. It likely hasn't seen a visitor in months."
+Central Main Street,"The street extends north, into town, and south, toward the entrance of Tull. To the east, you see a broken down barn. To the west, a dark alley."
+Southcentral Main Street,The main road continues north and south. The building to the west is larger than most of the other buildings in Tull. It is painted white and has a large wooden cross made of two planks of wood nailed above the door.
+South Main Street,"You see boarded-up houses to the west. The street extends north, into town, and south, out of it. A shack to the east has a broken sign in front that reads ""Convenience Store"" in old paint."
+Road into Tull,"You stand at the only entrance into the town of Tull, to the north. In all other directions, blistering, flat desert is all you can see for miles.",,,,,desert,desert,desert
+Boarded-Up House
+Local Inn
+East Alley
+Barn and Livery,"A single lantern's glows sunkenly, lighting up the semidark of an old barn. Haystacks sit on dusty floorboards."
+Sylvia Pittston's Shack,"The shack is small and bare, with little furniture: a bed, a table, and two chairs. A faded rug covers the wooden floor."
