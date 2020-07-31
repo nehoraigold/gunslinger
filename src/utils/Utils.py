@@ -4,7 +4,7 @@ import json
 from os import path
 
 
-def LoadCSV(file_path: str) -> typing.List[str]:
+def LoadCSV(file_path: str) -> typing.List[typing.List[str]]:
     if not path.isfile(file_path):
         raise FileNotFoundError("Could not load CSV file {}".format(file_path))
     with open(file_path) as csv_file:
