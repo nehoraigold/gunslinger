@@ -5,8 +5,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-# If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly'] # If modifying these scopes, delete the file token.pickle
 PICKLE_FILE_PATH = os.path.join(os.path.dirname(__file__), "token.pickle")
 CREDENTIALS_FILE_PATH = os.path.join(os.path.dirname(__file__), "credentials.json")
 SPREADSHEET_ID = "1J2Nxaoq8fk3TEQ_3n_n7SNYkQuhXLQypKims0MNazlU"
@@ -14,15 +13,21 @@ DESTINATION_DIRECTORY = os.path.join(os.getcwd(), "csv")
 
 
 def main():
+    print("Starting download script...")
     credentials = load_credentials()
     if not credentials or not credentials.valid:
+        print("Credentials require user authentication.")
         authenticate_user(credentials)
 
+    print("Connecting to Google Drive services...")
     service = build('sheets', 'v4', credentials=credentials)
+
     print("Retrieving spreadsheet with ID {} from Google Drive...".format(SPREADSHEET_ID))
     document = service.spreadsheets().get(spreadsheetId=SPREADSHEET_ID).execute()
+
     print("Got sheet '{}' successfully!".format(document["properties"]["title"]))
     download_sheet_tabs_to_csv_files(service, document)
+
     print("All CSV files updated!")
 
 
