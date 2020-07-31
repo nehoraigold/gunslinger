@@ -1,15 +1,14 @@
 import unittest
 import typing
 import csv
-from os import remove
+from os import path, remove
 from src.utils import Utils
 
 
 def create_csv_file(file_path: str, data: typing.List[typing.List[str]]):
     with open(file_path, "w", newline='\n') as file:
         writer = csv.writer(file, delimiter=',')
-        for row in data:
-            writer.writerow(row)
+        writer.writerows(data)
 
 
 def delete_csv_file(file_path: str):
@@ -30,7 +29,7 @@ class UtilsLoadCSVTests(unittest.TestCase):
                 pass
 
     def test_load_valid_csv(self):
-        csv_file_path = "tests/utils_tests/valid_csv_file.csv"
+        csv_file_path = path.join(path.dirname(__file__), "valid_csv_file.csv")
         data = [["A", "B", "C", "D"], ["W", "X", "Y", "Z"]]
         create_csv_file(csv_file_path, data)
 
