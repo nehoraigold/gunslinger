@@ -17,7 +17,7 @@ class TakeActionHandler(IActionHandler):
             message = "You cannot take the {}.".format(str(item))
         else:
             current_room.RemoveItem(item)
-            self.player.inventory.Add(item)
+            self.player.Take(item)
             message = "You took the {}.".format(str(item))
 
         Print.Message(message)

@@ -31,5 +31,14 @@ class Inventory:
         except ValueError:
             return False
 
+    def GetSummary(self) -> typing.Dict[str, int]:
+        item_quantities = {}
+        for item in self.items:
+            if item.GetName() in item_quantities.keys():
+                item_quantities[item.GetName()] += 1
+            else:
+                item_quantities[item.GetName()] = 1
+        return item_quantities
+
     def Size(self):
         return len(self.items)

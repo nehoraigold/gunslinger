@@ -1,5 +1,6 @@
 from src.actions.Action import Action, ActionType
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, IRoom
+from src.actions.handlers.inventory.InventoryActionHandler import InventoryActionHandler
 from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player
 from src.actions.handlers.look.LookActionHandler import LookActionHandler
 from src.actions.handlers.quit.QuitActionHandler import QuitActionHandler
@@ -14,6 +15,7 @@ class ActionHandler(IActionHandler):
             ActionType.LOOK: LookActionHandler(),
             ActionType.TAKE: TakeActionHandler(player),
             ActionType.INTERACT: InteractActionHandler(),
+            ActionType.INVENTORY: InventoryActionHandler(player),
             ActionType.QUIT: QuitActionHandler()
         }
 

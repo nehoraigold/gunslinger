@@ -1,6 +1,6 @@
 import typing
 from src.utils import Utils
-from src.Inventory import Inventory
+from src.Inventory import Inventory, Item
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
@@ -12,6 +12,15 @@ class Player:
 
     def GetLocation(self) -> typing.Tuple[int, int]:
         return self.coordinate
+
+    def GetInventory(self) -> Inventory:
+        return self.inventory
+
+    def Take(self, item: Item) -> None:
+        self.inventory.Add(item)
+
+    def Drop(self, item: Item) -> None:
+        self.inventory.Remove(item)
 
     def Move(self, direction: MoveDirection) -> None:
         self.coordinate = Utils.AddCoordinates(self.coordinate, direction.value)
