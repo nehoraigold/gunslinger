@@ -30,10 +30,7 @@ class Room(IRoom):
         self.blockers[direction] = blocker
 
     def ContainsItem(self, name: str) -> typing.Union[None, Item]:
-        item = self.items.Peek(name)
-        if item is not None:
-            return item
-        return None
+        return self.items.Peek(name)
 
     def AddItem(self, item: Item) -> None:
         self.items.Add(item)

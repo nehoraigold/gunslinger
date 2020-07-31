@@ -3,6 +3,7 @@ import typing
 import os
 from tests.mocks.MockBuilder import MockBuilder
 from src.builders.csv.CSVRoomBuilder import CSVRoomBuilder, MoveDirection
+from src.models.Item import Item
 from src.models.Blocker import Blocker
 from tests.utils_tests.utils_tests.load_csv_tests import delete_csv_file, create_csv_file
 
@@ -13,32 +14,31 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
     DEFAULT_FIRST_TIME_EVENT = ""
     DEFAULT_INTERACTABLES = []
     DEFAULT_ITEMS = []
+    DEFAULT_NPCS = []
     DEFAULT_BLOCKERS = {}
 
     @staticmethod
     def create_csv_row(name: str, desc: str, first_time_event: str,
-                       interactable_names: typing.List[str],
-                       item_names: typing.List[str],
+                       item_names: typing.List[str], npc_names: typing.List[str],
                        blockers: typing.Dict[MoveDirection, str]) -> typing.List[str]:
         return [name, desc, first_time_event,
-                '; '.join(interactable_names),
                 '; '.join(item_names),
+                '; '.join(npc_names),
                 blockers.get(MoveDirection.UP, ""),
                 blockers.get(MoveDirection.DOWN, ""),
                 blockers.get(MoveDirection.LEFT, ""),
                 blockers.get(MoveDirection.RIGHT, "")]
 
-    @staticmethod
-    def create_default_room_csv_row():
-        return CSVRoomBuilderBuildTests.create_csv_row(CSVRoomBuilderBuildTests.DEFAULT_NAME,
-                                                       CSVRoomBuilderBuildTests.DEFAULT_DESC,
-                                                       CSVRoomBuilderBuildTests.DEFAULT_FIRST_TIME_EVENT,
-                                                       CSVRoomBuilderBuildTests.DEFAULT_INTERACTABLES,
-                                                       CSVRoomBuilderBuildTests.DEFAULT_ITEMS,
-                                                       CSVRoomBuilderBuildTests.DEFAULT_BLOCKERS)
+    def create_default_room_csv_row(self):
+        return self.create_csv_row(self.DEFAULT_NAME,
+                                   self.DEFAULT_DESC,
+                                   self.DEFAULT_FIRST_TIME_EVENT,
+                                   self.DEFAULT_ITEMS,
+                                   self.DEFAULT_NPCS,
+                                   self.DEFAULT_BLOCKERS)
 
     def create_room_csv_file(self, rows: typing.List[typing.List[str]]):
-        header_row = ["name", "description", "first time event", "interactables", "items",
+        header_row = ["name", "description", "first time event", "items", "npcs",
                       "blocker up", "blocker down", "blocker left", "blocker right"]
         rows.insert(0, header_row)
         create_csv_file(self.file_path, rows)
@@ -104,13 +104,42 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
             self.assertEqual(str(room.GetBlocker(blocker_dir)), blocker_name)
 
     def test_build_room_with_no_items(self):
-        pass
+        self.create_room_csv_file([self.create_default_room_csv_row()])
+        item_name = "small key"
+
+        self.item_builder.Build = lambda name: Item(name)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        room = csv_room_builder.Build(self.DEFAULT_NAME)
+
+        self.assertIsNone(room.ContainsItem(item_name))
 
     def test_build_room_with_one_item(self):
-        pass
+        item_name = "small key"
+        self.DEFAULT_ITEMS.append(item_name)
+        self.create_room_csv_file([self.create_default_room_csv_row()])
+
+        self.item_builder.Build = lambda name: Item(name)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        room = csv_room_builder.Build(self.DEFAULT_NAME)
+
+        item = room.ContainsItem(item_name)
+        self.assertEqual(str(item), item_name)
 
     def test_build_room_with_multiple_items(self):
-        pass
+        item_name_1 = "small key"
+        item_name_2 = "piano"
+        self.DEFAULT_ITEMS.append(item_name_1)
+        self.DEFAULT_ITEMS.append(item_name_2)
+        self.create_room_csv_file([self.create_default_room_csv_row()])
+
+        self.item_builder.Build = lambda name: Item(name)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        room = csv_room_builder.Build(self.DEFAULT_NAME)
+
+        item_1 = room.ContainsItem(item_name_1)
+        self.assertEqual(str(item_1), item_name_1)
+        item_2 = room.ContainsItem(item_name_2)
+        self.assertEqual(str(item_2), item_name_2)
 
     def test_build_room_with_first_time_event(self):
         pass

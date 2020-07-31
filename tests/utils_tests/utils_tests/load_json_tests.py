@@ -1,6 +1,6 @@
 import unittest
 import json
-from os import remove
+from os import path, remove
 from src.utils import Utils
 
 
@@ -25,7 +25,7 @@ class LoadJSONTests(unittest.TestCase):
             Utils.LoadJSON(json_file_path)
 
     def test_load_valid_json(self):
-        json_file_path = "tests/utils_tests/valid.json"
+        json_file_path = path.join(path.dirname(__file__), "file.json")
         json_data = {"A": 1, "B": "Hello", "C": {"X": "Y", "Z": [1, 2, 3]}}
         create_json_file(json_file_path, json_data)
 
