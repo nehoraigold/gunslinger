@@ -17,12 +17,12 @@ def main():
     while True:
         try:
             action = ActionParser.Parse(input())
+            Print.NewLine()
+            action_handler.Handle(action, room)
+            room = world.GetRoom(player.GetLocation())
         except ParseException:
             Print.Message("Invalid action.")
             continue
-        Print.NewLine()
-        action_handler.Handle(action, room)
-        room = world.GetRoom(player.GetLocation())
 
 
 if __name__ == "__main__":

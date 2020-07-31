@@ -11,5 +11,5 @@ class Action:
     def GetType(self) -> ActionType:
         return self.type
 
-    def GetData(self) -> typing.Union[None, str, MoveDirection]:
+    def GetData(self) -> typing.Union[None, str, typing.List[str], MoveDirection]:
         return self.data
