@@ -5,12 +5,11 @@ from src.models.abstract.IRoom import IRoom, MoveDirection, Blocker
 
 class Room(IRoom):
     def __init__(self, name: str):
-        self.name = name
-        self.description = ""
-        self.has_visited = False
-        self.blockers = {}
-        self.items = Inventory()
-        self.interactables = []
+        self.name: str = name
+        self.description: str = ""
+        self.has_visited: bool = False
+        self.blockers: typing.Dict[MoveDirection, Blocker] = {}
+        self.items: Inventory = Inventory()
 
     def HasVisited(self) -> bool:
         return self.has_visited

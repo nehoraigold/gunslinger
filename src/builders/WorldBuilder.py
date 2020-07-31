@@ -27,7 +27,7 @@ def create_room_builder(configs: ConfigsLoader) -> IBuilder:
     file_path = configs.Get("roomFilePath")
     for pattern, builder in ROOM_BUILDERS.items():
         if re.search(pattern, file_path):
-            return builder(file_path, create_builder(configs, Blocker))
+            return builder(file_path, create_builder(configs, Blocker), create_builder(configs, Item))
 
 
 def create_blocker_builder(configs: ConfigsLoader) -> IBuilder:

@@ -1,4 +1,4 @@
-name,description,first time description,interactable names,item names,blocker name up,blocker name down ,blocker name left,blocker name right
+name,description,first time description,item names,npcs,blocker name up,blocker name down ,blocker name left,blocker name right
 Allie's Bedroom - Upstairs,"The room is messy. Stained and tattered clothes cover the decaying wooden furniture. It smells of alcohol, lilac, and rot. You can hear the faint scratching of mice through the walls.",,,,wall,,wall
 Sheb's Tavern Entrance,"Half a dozen townies play cards at tipsy-legged tables, spitoons on the sawdust floor nearby. An old piano sits near the back. To the south, you see the bar.",,old piano,,no mule,,wall
 Sheb's Tavern,Four townies sit on wobbly bar stools talking amongst themselves.,,,,,wall,wall,wall
@@ -11,7 +11,7 @@ Northcentral Main Street,"Main Street continues north and south. To the east, yo
 Central Main Street,"The street extends north, into town, and south, toward the entrance of Tull. To the east, you see a broken down barn. To the west, a dark alley."
 Southcentral Main Street,The main road continues north and south. The building to the west is larger than most of the other buildings in Tull. It is painted white and has a large wooden cross made of two planks of wood nailed above the door.
 South Main Street,"You see boarded-up houses to the west. The street extends north, into town, and south, out of it. A shack to the east has a broken sign in front that reads ""Convenience Store"" in old paint."
-Road into Tull,"You stand at the only entrance into the town of Tull, to the north. In all other directions, blistering, flat desert is all you can see for miles.",,,small key,,desert,desert,desert
+Road into Tull,"You stand at the only entrance into the town of Tull, to the north. In all other directions, blistering, flat desert is all you can see for miles.",,small key,,,desert,desert,desert
 Boarded-Up House
 Local Inn
 East Alley

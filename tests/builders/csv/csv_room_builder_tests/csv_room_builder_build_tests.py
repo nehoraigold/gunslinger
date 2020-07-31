@@ -51,7 +51,6 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.DEFAULT_BLOCKERS.clear()
 
         self.blocker_builder = MockBuilder()
-        self.interactable_builder = MockBuilder()
         self.item_builder = MockBuilder()
 
     def tearDown(self) -> None:
@@ -60,7 +59,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
 
     def test_build_room_with_only_name_and_description(self):
         self.create_room_csv_file([self.create_default_room_csv_row()])
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         self.assertEqual(self.DEFAULT_NAME, str(room))
@@ -70,7 +69,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.blocker_builder.Build = lambda name: Blocker(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         self.assertIsNone(room.GetBlocker(MoveDirection.UP))
@@ -86,7 +85,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.blocker_builder.Build = lambda name: Blocker(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         self.assertEqual(blocker_name, str(room.GetBlocker(direction)))
@@ -98,19 +97,13 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.blocker_builder.Build = lambda name: Blocker(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         for blocker_dir, blocker_name in self.DEFAULT_BLOCKERS.items():
             self.assertEqual(str(room.GetBlocker(blocker_dir)), blocker_name)
 
-    def test_build_room_with_no_interactables(self):
-        pass
-
-    def test_build_room_with_one_interactable(self):
-        pass
-
-    def test_build_room_with_multiple_interactables(self):
+    def test_build_room_with_no_items(self):
         pass
 
     def test_build_room_with_one_item(self):
