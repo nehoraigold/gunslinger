@@ -1,4 +1,4 @@
-from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, Room
+from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
 from src.models.environment.World import World
 from src.Player import Player, MoveDirection
 from src.utils import Utils
@@ -10,7 +10,7 @@ class MoveActionHandler(IActionHandler):
         self.world = world
         self.player = player
 
-    def Handle(self, action: Action, room: Room) -> None:
+    def Handle(self, action: Action, room: IRoom) -> None:
         direction = action.GetData()
         blocker = room.GetBlocker(direction)
         if blocker is not None:
