@@ -1,6 +1,6 @@
 import typing
 from src.builders.abstract.IBuilder import IBuilder
-from src.models.environment.Room import Room, MoveDirection
+from src.models.Room import Room, MoveDirection
 from src.utils import Utils
 
 

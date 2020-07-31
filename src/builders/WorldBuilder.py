@@ -3,7 +3,7 @@ import re
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.builders.csv.CSVBlockerBuilder import Blocker, CSVBlockerBuilder
 from src.builders.csv.CSVRoomBuilder import Room, CSVRoomBuilder, IBuilder
-from src.builders.csv.CSVInteractableBuilder import Interactable, CSVInteractableBuilder
+from src.builders.csv.CSVItemBuilder import Item, CSVItemBuilder
 from src.builders.csv.CSVWorldBuilder import World, CSVWorldBuilder
 
 
@@ -37,9 +37,9 @@ def create_blocker_builder(configs: ConfigsLoader) -> IBuilder:
             return builder(file_path)
 
 
-def create_interactable_builder(configs: ConfigsLoader) -> IBuilder:
-    file_path = configs.Get("interactableFilePath")
-    for pattern, builder in INTERACTABLE_BUILDER.items():
+def create_item_builder(configs: ConfigsLoader) -> IBuilder:
+    file_path = configs.Get("itemFilePath")
+    for pattern, builder in ITEM_BUILDER.items():
         if re.search(pattern, file_path):
             return builder(file_path)
 
@@ -48,7 +48,7 @@ SWITCHER = {
     World: create_world_builder,
     Room: create_room_builder,
     Blocker: create_blocker_builder,
-    Interactable: create_interactable_builder
+    Item: create_item_builder
 }
 
 CSV_TYPE = r'\.csv$'
@@ -66,6 +66,6 @@ BLOCKER_BUILDERS = {
     CSV_TYPE: CSVBlockerBuilder
 }
 
-INTERACTABLE_BUILDER = {
-    CSV_TYPE: CSVInteractableBuilder
+ITEM_BUILDER = {
+    CSV_TYPE: CSVItemBuilder
 }

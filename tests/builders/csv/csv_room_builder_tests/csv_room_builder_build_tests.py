@@ -3,7 +3,7 @@ import typing
 import os
 from tests.mocks.MockBuilder import MockBuilder
 from src.builders.csv.CSVRoomBuilder import CSVRoomBuilder, MoveDirection
-from src.models.interactables.blockers.Blocker import Blocker
+from src.models.Blocker import Blocker
 from tests.utils_tests.utils_tests.load_csv_tests import delete_csv_file, create_csv_file
 
 

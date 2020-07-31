@@ -1,6 +1,6 @@
 import typing
 from src.Inventory import Inventory, Item
-from src.models.environment.abstract.IRoom import IRoom, MoveDirection, Blocker
+from src.models.abstract.IRoom import IRoom, MoveDirection, Blocker
 
 
 class Room(IRoom):

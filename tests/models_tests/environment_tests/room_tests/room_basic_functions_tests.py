@@ -1,5 +1,5 @@
 import unittest
-from src.models.environment.Room import Room
+from src.models.Room import Room
 
 
 class NameAndDescriptionRoomTests(unittest.TestCase):

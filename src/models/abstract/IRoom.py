@@ -1,7 +1,7 @@
 import typing
 from abc import ABCMeta, abstractmethod
-from src.models.interactables.items.Item import Item, Interactable
-from src.models.interactables.blockers.Blocker import Blocker
+from src.models.Item import Item
+from src.models.Blocker import Blocker
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 

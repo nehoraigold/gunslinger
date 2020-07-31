@@ -1,12 +1,8 @@
 import unittest
-from src.models.interactables.blockers.Blocker import Blocker, Interactable
+from src.models.Blocker import Blocker
 
 
 class BlockerBasicFunctionsTests(unittest.TestCase):
-    def test_blocker_is_of_type_interactable(self):
-        blocker = Blocker("wall")
-        self.assertTrue(isinstance(blocker, Interactable))
-
     def test_get_block_message_returns_default_block_message(self):
         blocker = Blocker("wall")
         self.assertEqual(blocker.GetBlockMessage(), Blocker.DEFAULT_BLOCK_MESSAGE)

@@ -1,5 +1,5 @@
 from src.utils.Utils import FormatToHeader
-from src.models.environment.abstract.IRoom import IRoom
+from src.models.abstract.IRoom import IRoom
 
 
 def Message(message: str) -> str:

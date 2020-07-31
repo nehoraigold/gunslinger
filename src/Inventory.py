@@ -1,5 +1,5 @@
 import typing
-from src.models.interactables.items.Item import Item
+from src.models.Item import Item
 
 
 class Inventory:

@@ -1,6 +1,6 @@
 {
     "worldFilePath": "csv/map.csv",
     "roomFilePath": "csv/rooms.csv",
-    "interactableFilePath": "csv/interactables.csv",
+    "itemFilePath": "csv/items.csv",
     "blockerFilePath": "csv/blockers.csv"
 }

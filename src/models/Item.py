@@ -1,31 +1,38 @@
 import typing
 
 
-class Interactable:
-    INTERACTION_NOT_FOUND_DESCRIPTION = "You cannot {} the {}."
+class Item:
     EXAMINE_INTERACTION = "examine"
-
-    @staticmethod
-    def GetInteractionNotFoundDescription(interaction: str, interactable: "Interactable") -> str:
-        return Interactable.INTERACTION_NOT_FOUND_DESCRIPTION.format(interaction, str(interactable))
 
     def __init__(self, name: str):
         self.name = name
-        self.description = ""
+        self.value = 0
+        self.is_takeable = False
         self.alternative_names = []
         self.interactions = {
-            self.EXAMINE_INTERACTION: self.description
+            self.EXAMINE_INTERACTION: ""
         }
 
     def GetName(self) -> str:
         return self.name
 
     def GetDescription(self) -> str:
-        return self.description
+        return self.Interact(self.EXAMINE_INTERACTION)
 
     def SetDescription(self, description: str) -> None:
-        self.description = description
-        self.AddInteraction(self.EXAMINE_INTERACTION, self.description)
+        self.AddInteraction(self.EXAMINE_INTERACTION, description)
+
+    def GetValue(self) -> int:
+        return self.value
+
+    def SetValue(self, value: int) -> None:
+        self.value = value
+
+    def SetTakeability(self, is_takeable: bool) -> None:
+        self.is_takeable = is_takeable
+
+    def IsTakeable(self) -> bool:
+        return self.is_takeable
 
     def GetAllNames(self) -> typing.List[str]:
         return [self.name] + self.alternative_names
@@ -38,10 +45,7 @@ class Interactable:
         self.interactions[interaction] = interaction_description
 
     def Interact(self, interaction: str) -> str:
-        return self.interactions.get(interaction, self.GetInteractionNotFoundDescription(interaction, self))
-
-    def IsTakeable(self) -> bool:
-        return False
+        return self.interactions.get(interaction)
 
     def __repr__(self):
         return self.name

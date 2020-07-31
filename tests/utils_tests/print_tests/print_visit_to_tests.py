@@ -1,6 +1,6 @@
 import unittest
 from src.utils import Print
-from src.models.environment.Room import Room
+from src.models.Room import Room
 
 
 class PrintVisitToTests(unittest.TestCase):

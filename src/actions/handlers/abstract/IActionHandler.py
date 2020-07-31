@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from src.actions.Action import Action
-from src.models.environment.abstract.IRoom import IRoom
+from src.models.abstract.IRoom import IRoom
 
 
 class IActionHandler(metaclass=ABCMeta):

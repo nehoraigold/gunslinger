@@ -1,5 +1,5 @@
 from src.builders.abstract.IBuilder import IBuilder
-from src.models.environment.World import World, IWorld
+from src.models.World import World, IWorld
 from src.utils import Utils
 
 
