@@ -26,11 +26,7 @@ class ActionParser:
         verb = ActionParser.get_first_word(string)
         for action_type, parser in ActionParser.PARSERS.items():
             if verb in parser.GetWords():
-                try:
-                    return Action(action_type, parser.ParseToData(string))
-                except ParseException:
-                    continue
-
+                return Action(action_type, parser.ParseToData(string))
         return Action(ActionType.INTERACT, InteractActionParser.ParseToData(string))
 
     @staticmethod
