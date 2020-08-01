@@ -11,12 +11,12 @@ from src.actions.Action import Action, ActionType
 
 class ActionParser:
     PARSERS = {
-        ActionType.MOVE: MoveActionParser,
-        ActionType.LOOK: LookActionParser,
-        ActionType.TAKE: TakeActionParser,
-        ActionType.DROP: DropActionParser,
-        ActionType.INVENTORY: InventoryActionParser,
-        ActionType.QUIT: QuitActionParser
+        ActionType.MOVE: MoveActionParser(),
+        ActionType.LOOK: LookActionParser(),
+        ActionType.TAKE: TakeActionParser(),
+        ActionType.DROP: DropActionParser(),
+        ActionType.INVENTORY: InventoryActionParser(),
+        ActionType.QUIT: QuitActionParser()
     }
 
     @staticmethod
