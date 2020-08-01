@@ -12,3 +12,8 @@ class PrintMessageTests(unittest.TestCase):
         message = "You cannot go that way."
         string = Print.Message(message)
         self.assertEqual(message, string.strip())
+
+    def test_print_message_without_new_line(self):
+        message = "You cannot go that way."
+        string = Print.Message(message, False)
+        self.assertEqual(message, string)

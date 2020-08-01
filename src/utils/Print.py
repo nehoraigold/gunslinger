@@ -29,6 +29,8 @@ def GetInput(request: str) -> str:
 
 
 def UnorderedList(unordered_list: typing.List[str], number_of_indents: int = 1, bullet: str = "-") -> str:
+    if len(unordered_list) == 0:
+        return ""
     joiner = "{}{} ".format("\t" * number_of_indents, bullet)
     message = joiner
     message += "\n{}".format(joiner).join(unordered_list)
