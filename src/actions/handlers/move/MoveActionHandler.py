@@ -1,6 +1,6 @@
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
 from src.models.World import World
-from src.Player import Player, MoveDirection
+from src.models.Player import Player, MoveDirection
 from src.utils import Utils
 from src.utils import Print
 

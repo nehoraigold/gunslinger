@@ -1,5 +1,5 @@
 import unittest
-from src.Inventory import Inventory, Item
+from src.models.Inventory import Inventory, Item
 
 
 class InventoryPeekTests(unittest.TestCase):

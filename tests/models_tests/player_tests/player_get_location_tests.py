@@ -1,5 +1,5 @@
 import unittest
-from src.Player import Player
+from src.models.Player import Player
 
 
 class PlayerGetLocationTests(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 import typing
-from src.Player import Player, MoveDirection
+from src.models.Player import Player, MoveDirection
 
 
 class PlayerMoveTests(unittest.TestCase):

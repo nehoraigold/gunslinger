@@ -1,6 +1,6 @@
 import typing
 from src.utils import Utils
-from src.Inventory import Inventory, Item
+from src.models.Inventory import Inventory, Item
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 

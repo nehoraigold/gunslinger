@@ -1,5 +1,5 @@
 import typing
-from src.Inventory import Inventory, Item
+from src.models.Inventory import Inventory, Item
 from src.models.abstract.IRoom import IRoom, MoveDirection, Blocker
 
 

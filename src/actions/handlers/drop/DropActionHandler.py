@@ -1,6 +1,6 @@
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
 from src.utils import Print
-from src.Player import Player
+from src.models.Player import Player
 
 
 class DropActionHandler(IActionHandler):

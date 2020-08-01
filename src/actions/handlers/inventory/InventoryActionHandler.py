@@ -1,6 +1,6 @@
 import typing
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
-from src.Player import Player
+from src.models.Player import Player
 from src.utils import Print
 
 
