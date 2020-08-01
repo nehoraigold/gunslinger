@@ -16,7 +16,7 @@ class ActionHandler(IActionHandler):
             ActionType.LOOK: LookActionHandler(),
             ActionType.TAKE: TakeActionHandler(player),
             ActionType.DROP: DropActionHandler(player),
-            ActionType.INTERACT: InteractActionHandler(),
+            ActionType.INTERACT: InteractActionHandler(player),
             ActionType.INVENTORY: InventoryActionHandler(player),
             ActionType.QUIT: QuitActionHandler()
         }

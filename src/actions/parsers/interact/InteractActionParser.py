@@ -1,5 +1,6 @@
 import typing
 from src.actions.parsers.abstract.IActionParser import IActionParser
+from src.actions.data_types.interaction.InteractionData import InteractionData
 
 
 class InteractActionParser(IActionParser):
@@ -10,4 +11,4 @@ class InteractActionParser(IActionParser):
     @staticmethod
     def ParseToData(string: str) -> any:
         words = string.split(' ')
-        return {"verb": words[0], "args": words[1:]}
+        return InteractionData(words[0], " ".join(words[1:]))

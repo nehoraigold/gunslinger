@@ -1,6 +1,7 @@
 import typing
 from src.actions.ActionType import ActionType
 from src.actions.data_types.move.MoveDirection import MoveDirection
+from src.actions.data_types.interaction.InteractionData import InteractionData
 
 
 class Action:
@@ -14,6 +15,6 @@ class Action:
     def GetData(self) -> typing.Union[None,
                                       str,
                                       MoveDirection,
-                                      typing.List[str],
-                                      typing.Dict[str, typing.Union[str, typing.List[str]]]]:
+                                      InteractionData,
+                                      typing.List[str]]:
         return self.data
