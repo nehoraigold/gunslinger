@@ -27,7 +27,7 @@ class ActionParserParseTests(unittest.TestCase):
         action = ActionParser.Parse(valid_quit_action)
         self.assertEqual(action.GetType(), ActionType.QUIT)
 
-    def test_parse_valid_take_action(self):
+    def test_parse_valid_transfer_action(self):
         valid_take_action = "grab item"
         action = ActionParser.Parse(valid_take_action)
-        self.assertEqual(action.GetType(), ActionType.TAKE)
+        self.assertEqual(action.GetType(), ActionType.TRANSFER)

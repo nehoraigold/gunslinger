@@ -111,7 +111,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
-        self.assertIsNone(room.ContainsItem(item_name))
+        self.assertIsNone(room.GetInventory().Peek(item_name))
 
     def test_build_room_with_one_item(self):
         item_name = "small key"
@@ -122,7 +122,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
-        item = room.ContainsItem(item_name)
+        item = room.GetInventory().Peek(item_name)
         self.assertEqual(str(item), item_name)
 
     def test_build_room_with_multiple_items(self):
@@ -136,9 +136,9 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
-        item_1 = room.ContainsItem(item_name_1)
+        item_1 = room.GetInventory().Peek(item_name_1)
         self.assertEqual(str(item_1), item_name_1)
-        item_2 = room.ContainsItem(item_name_2)
+        item_2 = room.GetInventory().Peek(item_name_2)
         self.assertEqual(str(item_2), item_name_2)
 
     def test_build_room_with_first_time_event(self):

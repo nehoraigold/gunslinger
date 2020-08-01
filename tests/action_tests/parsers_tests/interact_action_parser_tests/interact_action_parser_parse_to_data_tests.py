@@ -18,7 +18,7 @@ class TakeActionParserParseToDataTests(unittest.TestCase):
         self.assertEqual(data.GetNoun(), noun)
 
     def test_more_than_two_word_interact_action_results_in_first_word_verb_rest_noun(self):
-        three_word_take_action = "take small key"
+        three_word_take_action = "transfer small key"
         verb, adjective, noun = three_word_take_action.split(' ')
         noun = ' '.join([adjective, noun])
 

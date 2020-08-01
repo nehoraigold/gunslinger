@@ -4,8 +4,7 @@ import enum
 class ActionType(enum.Enum):
     MOVE = "MOVE"
     LOOK = "LOOK"
-    TAKE = "TAKE"
-    DROP = "DROP"
+    TRANSFER = "TRANSFER"
     SPEAK = "SPEAK"
     UNLOCK = "UNLOCK"
     INTERACT = "INTERACT"

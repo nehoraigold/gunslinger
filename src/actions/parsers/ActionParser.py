@@ -1,7 +1,6 @@
 from src.actions.parsers.move.MoveActionParser import MoveActionParser
 from src.actions.parsers.look.LookActionParser import LookActionParser
-from src.actions.parsers.take.TakeActionParser import TakeActionParser
-from src.actions.parsers.drop.DropActionParser import DropActionParser
+from src.actions.parsers.transfer.TransferActionParser import TransferActionParser
 from src.actions.parsers.quit.QuitActionParser import QuitActionParser
 from src.actions.parsers.interact.InteractActionParser import InteractActionParser
 from src.actions.parsers.inventory.InventoryActionParser import InventoryActionParser
@@ -13,8 +12,7 @@ class ActionParser:
     PARSERS = {
         ActionType.MOVE: MoveActionParser(),
         ActionType.LOOK: LookActionParser(),
-        ActionType.TAKE: TakeActionParser(),
-        ActionType.DROP: DropActionParser(),
+        ActionType.TRANSFER: TransferActionParser(),
         ActionType.INVENTORY: InventoryActionParser(),
         ActionType.QUIT: QuitActionParser()
     }

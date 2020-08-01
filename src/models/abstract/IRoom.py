@@ -1,6 +1,6 @@
 import typing
 from abc import ABCMeta, abstractmethod
-from src.models.Item import Item
+from src.models.Inventory import Inventory
 from src.models.Blocker import Blocker
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
@@ -31,13 +31,5 @@ class IRoom(metaclass=ABCMeta):
         raise NotImplementedError
 
     @abstractmethod
-    def ContainsItem(self, name: str) -> typing.Union[None, Item]:
-        raise NotImplementedError
-
-    @abstractmethod
-    def RemoveItem(self, item: Item) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def AddItem(self, item: Item) -> None:
+    def GetInventory(self) -> Inventory:
         raise NotImplementedError

@@ -9,7 +9,7 @@ class Room(IRoom):
         self.description: str = ""
         self.has_visited: bool = False
         self.blockers: typing.Dict[MoveDirection, Blocker] = {}
-        self.items: Inventory = Inventory()
+        self.inventory: Inventory = Inventory()
 
     def HasVisited(self) -> bool:
         return self.has_visited
@@ -29,14 +29,8 @@ class Room(IRoom):
     def AddBlocker(self, direction: MoveDirection, blocker: Blocker) -> None:
         self.blockers[direction] = blocker
 
-    def ContainsItem(self, name: str) -> typing.Union[None, Item]:
-        return self.items.Peek(name)
-
-    def AddItem(self, item: Item) -> None:
-        self.items.Add(item)
-
-    def RemoveItem(self, item: Item) -> None:
-        self.items.Remove(item)
+    def GetInventory(self) -> Inventory:
+        return self.inventory
 
     def __repr__(self) -> str:
         return self.name

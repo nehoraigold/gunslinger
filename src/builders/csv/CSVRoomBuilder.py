@@ -33,8 +33,9 @@ class CSVRoomBuilder(IBuilder):
 
     def set_items(self, room: Room, items: str) -> None:
         item_names = [name.strip().lower() for name in items.split(self.INNER_CELL_DELIMITER) if len(name.strip()) != 0]
+        room_inventory = room.GetInventory()
         for item_name in item_names:
-            room.AddItem(self.item_builder.Build(item_name))
+            room_inventory.Add(self.item_builder.Build(item_name))
 
     def set_blockers(self, room: Room, blockers: typing.List[str]) -> None:
         BLOCKER_ORDER = [MoveDirection.UP, MoveDirection.DOWN, MoveDirection.LEFT, MoveDirection.RIGHT]

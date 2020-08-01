@@ -17,7 +17,7 @@ class InteractActionHandler(IActionHandler):
         Print.Message(interaction_message)
 
     def get_item(self, interaction_data: InteractionData, current_room: IRoom):
-        item = current_room.ContainsItem(interaction_data.GetNoun())
+        item = current_room.GetInventory().Peek(interaction_data.GetNoun())
         if item is None:
             item = self.player.GetInventory().Peek(interaction_data.GetNoun())
         return item
