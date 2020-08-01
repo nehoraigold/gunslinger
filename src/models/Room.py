@@ -24,7 +24,10 @@ class Room(IRoom):
         self.description = description
 
     def GetBlocker(self, direction: MoveDirection) -> typing.Union[None, Blocker]:
-        return self.blockers.get(direction, None)
+        return self.blockers.get(direction)
+
+    def GetAllBlockers(self) -> typing.List[Blocker]:
+        return list(self.blockers.values())
 
     def AddBlocker(self, direction: MoveDirection, blocker: Blocker) -> None:
         self.blockers[direction] = blocker

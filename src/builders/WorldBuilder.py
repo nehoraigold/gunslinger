@@ -1,7 +1,7 @@
 import typing
 import re
 from src.configs.ConfigsLoader import ConfigsLoader
-from src.builders.csv.CSVBlockerBuilder import Blocker, CSVBlockerBuilder
+from src.builders.csv.CSVBlockerBuilder import IBlocker, CSVBlockerBuilder
 from src.builders.csv.CSVRoomBuilder import Room, CSVRoomBuilder, IBuilder
 from src.builders.csv.CSVItemBuilder import Item, CSVItemBuilder
 from src.builders.csv.CSVWorldBuilder import World, CSVWorldBuilder
@@ -27,7 +27,7 @@ def create_room_builder(configs: ConfigsLoader) -> IBuilder:
     file_path = configs.Get("roomFilePath")
     for pattern, builder in ROOM_BUILDERS.items():
         if re.search(pattern, file_path):
-            return builder(file_path, create_builder(configs, Blocker), create_builder(configs, Item))
+            return builder(file_path, create_builder(configs, IBlocker), create_builder(configs, Item))
 
 
 def create_blocker_builder(configs: ConfigsLoader) -> IBuilder:
@@ -47,7 +47,7 @@ def create_item_builder(configs: ConfigsLoader) -> IBuilder:
 SWITCHER = {
     World: create_world_builder,
     Room: create_room_builder,
-    Blocker: create_blocker_builder,
+    IBlocker: create_blocker_builder,
     Item: create_item_builder
 }
 

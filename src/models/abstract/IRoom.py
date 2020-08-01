@@ -1,7 +1,7 @@
 import typing
 from abc import ABCMeta, abstractmethod
 from src.models.Inventory import Inventory
-from src.models.Blocker import Blocker
+from src.models.blockers.Blocker import Blocker
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
@@ -24,6 +24,10 @@ class IRoom(metaclass=ABCMeta):
 
     @abstractmethod
     def GetBlocker(self, direction: MoveDirection) -> typing.Union[None, Blocker]:
+        raise NotImplementedError
+
+    @abstractmethod
+    def GetAllBlockers(self) -> typing.List[Blocker]:
         raise NotImplementedError
 
     @abstractmethod

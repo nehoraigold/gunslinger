@@ -4,7 +4,7 @@ import os
 from tests.mocks.MockBuilder import MockBuilder
 from src.builders.csv.CSVRoomBuilder import CSVRoomBuilder, MoveDirection
 from src.models.Item import Item
-from src.models.Blocker import Blocker
+from src.models.blockers.Blocker import Blocker
 from tests.utils_tests.utils_tests.load_csv_tests import delete_csv_file, create_csv_file
 
 

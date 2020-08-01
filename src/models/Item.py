@@ -1,7 +1,8 @@
 import typing
+from src.models.abstract.IInteractable import IInteractable
 
 
-class Item:
+class Item(IInteractable):
     EXAMINE_INTERACTION = "examine"
 
     def __init__(self, name: str):
@@ -44,7 +45,7 @@ class Item:
     def AddInteraction(self, interaction: str, interaction_description: str) -> None:
         self.interactions[interaction] = interaction_description
 
-    def Interact(self, interaction: str) -> str:
+    def Interact(self, interaction: str, interaction_data: any = None) -> str:
         return self.interactions.get(interaction)
 
     def __repr__(self):

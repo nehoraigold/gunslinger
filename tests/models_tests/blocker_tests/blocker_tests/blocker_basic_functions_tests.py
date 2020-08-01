@@ -1,5 +1,5 @@
 import unittest
-from src.models.Blocker import Blocker
+from src.models.blockers.Blocker import Blocker
 
 
 class BlockerBasicFunctionsTests(unittest.TestCase):
@@ -12,3 +12,13 @@ class BlockerBasicFunctionsTests(unittest.TestCase):
         blocker = Blocker("wall")
         blocker.SetBlockMessage(custom_block_message)
         self.assertEqual(blocker.GetBlockMessage(), custom_block_message)
+
+    def test_interact_returns_none(self):
+        blocker = Blocker("wall")
+        self.assertIsNone(blocker.Interact(""))
+        self.assertIsNone(blocker.Interact("unlock"))
+        self.assertIsNone(blocker.Interact("invalid"))
+
+    def test_allow_always_returns_false(self):
+        blocker = Blocker("wall")
+        self.assertFalse(blocker.Allow())

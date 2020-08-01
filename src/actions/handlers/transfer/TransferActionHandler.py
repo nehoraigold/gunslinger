@@ -1,8 +1,9 @@
 import typing
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
 from src.actions.data_types.transfer.TransferData import TransferData, TransferType
+from src.models.Player import Player, Inventory
+from src.models.Item import Item
 from src.utils import Print
-from src.models.Player import Player, Inventory, Item
 
 
 class TransferActionHandler(IActionHandler):

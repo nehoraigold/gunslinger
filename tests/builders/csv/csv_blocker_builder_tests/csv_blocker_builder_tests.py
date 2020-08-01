@@ -1,37 +1,27 @@
 import unittest
 import typing
 import os
-from src.builders.csv.CSVBlockerBuilder import CSVBlockerBuilder, Blocker
+from src.builders.csv.CSVBlockerBuilder import CSVBlockerBuilder
+from src.models.blockers.Blocker import Blocker
 from tests.utils_tests.utils_tests.load_csv_tests import create_csv_file, delete_csv_file
 
 
 class CSVBlockerBuilderTests(unittest.TestCase):
-    DEFAULT_NAME = "door"
+    DEFAULT_NAME = "wall"
+    DEFAULT_TYPE = ""
     DEFAULT_BLOCK_MESSAGE = ""
-    DEFAULT_LOCKABLE = True
-    DEFAULT_STARTS_LOCKED = True
-    DEFAULT_UNLOCK_FAILED = "You could not unlock the door."
-    DEFAULT_UNLOCK_SUCCESSFUL = "You unlocked the door!"
 
     @staticmethod
-    def create_blocker_csv_row(name: str, block_message: str, lockable: bool, starts_locked: bool,
-                               unlock_failed_description: str,	unlock_success_description: str):
-        return [name, block_message,
-                "TRUE" if lockable else "FALSE",
-                "TRUE" if starts_locked else "FALSE",
-                unlock_failed_description,
-                unlock_success_description]
+    def create_blocker_csv_row(name: str, blocker_type: str, block_message: str):
+        return [name, blocker_type, block_message]
 
     def create_default_blocker_row(self):
         return CSVBlockerBuilderTests.create_blocker_csv_row(self.DEFAULT_NAME,
-                                                             self.DEFAULT_BLOCK_MESSAGE,
-                                                             self.DEFAULT_LOCKABLE,
-                                                             self.DEFAULT_STARTS_LOCKED,
-                                                             self.DEFAULT_UNLOCK_FAILED,
-                                                             self.DEFAULT_UNLOCK_SUCCESSFUL)
+                                                             self.DEFAULT_TYPE,
+                                                             self.DEFAULT_BLOCK_MESSAGE)
 
     def create_blockers_csv_file(self, rows: typing.List[typing.List[str]]):
-        header_row = ["name", "block message", "lockable", "starts locked", "unlock failed", "unlock successful"]
+        header_row = ["name", "blocker type", "block message"]
         rows.insert(0, header_row)
         create_csv_file(self.file_path, rows)
 
@@ -40,8 +30,6 @@ class CSVBlockerBuilderTests(unittest.TestCase):
 
     def tearDown(self) -> None:
         CSVBlockerBuilderTests.DEFAULT_BLOCK_MESSAGE = ""
-        CSVBlockerBuilderTests.DEFAULT_LOCKABLE = True
-        CSVBlockerBuilderTests.DEFAULT_STARTS_LOCKED = True
         if os.path.isfile(self.file_path):
             delete_csv_file(self.file_path)
 

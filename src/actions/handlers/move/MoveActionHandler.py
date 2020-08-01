@@ -13,7 +13,7 @@ class MoveActionHandler(IActionHandler):
     def Handle(self, action: Action, room: IRoom) -> None:
         direction = action.GetData()
         blocker = room.GetBlocker(direction)
-        if blocker is not None:
+        if blocker is not None and not blocker.Allow():
             Print.Message(blocker.GetBlockMessage())
             return
         new_room = self.get_new_room(direction)
