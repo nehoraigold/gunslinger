@@ -5,6 +5,7 @@ from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World
 from src.actions.handlers.look.LookActionHandler import LookActionHandler
 from src.actions.handlers.quit.QuitActionHandler import QuitActionHandler
 from src.actions.handlers.take.TakeActionHandler import TakeActionHandler
+from src.actions.handlers.drop.DropActionHandler import DropActionHandler
 from src.actions.handlers.interact.InteractActionHandler import InteractActionHandler
 
 
@@ -14,6 +15,7 @@ class ActionHandler(IActionHandler):
             ActionType.MOVE: MoveActionHandler(world, player),
             ActionType.LOOK: LookActionHandler(),
             ActionType.TAKE: TakeActionHandler(player),
+            ActionType.DROP: DropActionHandler(player),
             ActionType.INTERACT: InteractActionHandler(),
             ActionType.INVENTORY: InventoryActionHandler(player),
             ActionType.QUIT: QuitActionHandler()
