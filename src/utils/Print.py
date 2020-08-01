@@ -35,3 +35,11 @@ def UnorderedList(unordered_list: typing.List[str], number_of_indents: int = 1, 
     message += "\n"
     print(message)
     return message
+
+
+def OrderedList(ordered_list: typing.List[str], number_of_indents: int = 1) -> str:
+    message = ""
+    for i, li in enumerate(ordered_list):
+        message += "{}{}. {}\n".format("\t" * number_of_indents, i + 1, str(li))
+    print(message)
+    return message
