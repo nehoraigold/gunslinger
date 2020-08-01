@@ -3,6 +3,7 @@ from src.actions.Action import ActionType, Action
 from src.actions.data_types.move.MoveDirection import MoveDirection
 from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player
 from src.models.Room import Room, Blocker
+from src.utils import Utils
 
 
 class MoveActionHandlerHandleTests(unittest.TestCase):
@@ -19,11 +20,12 @@ class MoveActionHandlerHandleTests(unittest.TestCase):
     def test_handle_valid_move_action(self):
         initial_location = self.player.GetLocation()
 
-        action = Action(ActionType.MOVE, MoveDirection.DOWN)
+        direction = MoveDirection.DOWN
+        action = Action(ActionType.MOVE, direction)
         self.move_action_handler.Handle(action, self.world.GetRoom(initial_location))
 
         ending_location = self.player.GetLocation()
-        self.assertNotEqual(initial_location, ending_location)
+        self.assertEqual(Utils.AddCoordinates(initial_location, direction.value), ending_location)
 
     def test_handle_no_adjacent_room(self):
         initial_location = self.player.GetLocation()
@@ -56,9 +58,10 @@ class MoveActionHandlerHandleTests(unittest.TestCase):
         blocker = Blocker("wall")
         room.AddBlocker(MoveDirection.DOWN, blocker)
 
-        action = Action(ActionType.MOVE, MoveDirection.RIGHT)
+        direction = MoveDirection.RIGHT
+        action = Action(ActionType.MOVE, direction)
 
         self.move_action_handler.Handle(action, room)
 
         ending_location = self.player.GetLocation()
-        self.assertNotEqual(initial_location, ending_location)
+        self.assertEqual(Utils.AddCoordinates(initial_location, direction.value), ending_location)
