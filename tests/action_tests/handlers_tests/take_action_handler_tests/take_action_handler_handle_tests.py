@@ -10,10 +10,10 @@ class TakeActionHandlerHandleTests(unittest.TestCase):
         self.player = Player()
         self.handler = TakeActionHandler(self.player)
 
-    def create_room_with(self, items: typing.List[Item], is_takeable: bool = True) -> Room:
+    def create_room_with(self, items: typing.List[Item], is_transferable: bool = True) -> Room:
         room = Room("name")
         for item in items:
-            item.SetTakeability(is_takeable)
+            item.SetTransferability(is_transferable)
             room.AddItem(item)
         return room
 
@@ -90,7 +90,7 @@ class TakeActionHandlerHandleTests(unittest.TestCase):
         self.assertIsNotNone(item_in_inventory)
         self.assertNotEqual(item_in_room, item_in_inventory)
 
-    def test_take_action_on_untakeable_item_results_in_no_change_in_inventory(self):
+    def test_take_action_on_untransferable_item_results_in_no_change_in_inventory(self):
         item = Item("key")
         room = self.create_room_with([item], False)
 

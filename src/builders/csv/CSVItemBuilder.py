@@ -45,7 +45,7 @@ class CSVItemBuilder(IBuilder):
             item.AddInteraction(interaction.strip().lower(), interaction_desc.strip())
 
     def set_takeability(self, item: Item, is_takeable_str: str) -> None:
-        item.SetTakeability(is_takeable_str.strip().lower() == "true")
+        item.SetTransferability(is_takeable_str.strip().lower() == "true")
 
     def set_value(self, item: Item, value_str: str) -> None:
         try:

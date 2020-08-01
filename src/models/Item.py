@@ -7,7 +7,7 @@ class Item:
     def __init__(self, name: str):
         self.name = name
         self.value = 0
-        self.is_takeable = False
+        self.is_transferable = False
         self.alternative_names = []
         self.interactions = {
             self.EXAMINE_INTERACTION: ""
@@ -28,11 +28,11 @@ class Item:
     def SetValue(self, value: int) -> None:
         self.value = value
 
-    def SetTakeability(self, is_takeable: bool) -> None:
-        self.is_takeable = is_takeable
+    def SetTransferability(self, is_takeable: bool) -> None:
+        self.is_transferable = is_takeable
 
-    def IsTakeable(self) -> bool:
-        return self.is_takeable
+    def IsTransferable(self) -> bool:
+        return self.is_transferable
 
     def GetAllNames(self) -> typing.List[str]:
         return [self.name] + self.alternative_names

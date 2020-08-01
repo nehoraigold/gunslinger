@@ -12,7 +12,7 @@ class TakeActionHandler(IActionHandler):
         item = current_room.ContainsItem(item_name)
         if item is None:
             message = "There is no {} for you to take.".format(item_name)
-        elif not item.IsTakeable():
+        elif not item.IsTransferable():
             message = "You cannot take the {}.".format(str(item))
         else:
             current_room.RemoveItem(item)

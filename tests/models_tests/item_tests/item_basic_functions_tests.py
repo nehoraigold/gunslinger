@@ -32,7 +32,7 @@ class ItemBasicFunctionsTests(unittest.TestCase):
 
     def test_is_takeable_always_returns_false(self):
         item = Item("piano")
-        self.assertFalse(item.IsTakeable())
+        self.assertFalse(item.IsTransferable())
 
     def test_value_initialized_at_default_value(self):
         default_value = 0
@@ -49,9 +49,9 @@ class ItemBasicFunctionsTests(unittest.TestCase):
 
     def test_is_takeable_is_false_by_default(self):
         item = Item("water canteen")
-        self.assertFalse(item.IsTakeable())
+        self.assertFalse(item.IsTransferable())
 
     def test_is_takeable_changes_after_set_takeability(self):
         item = Item("water canteen")
-        item.SetTakeability(True)
-        self.assertTrue(item.IsTakeable())
+        item.SetTransferability(True)
+        self.assertTrue(item.IsTransferable())
