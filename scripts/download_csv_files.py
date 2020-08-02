@@ -50,6 +50,9 @@ def authenticate_user(credentials):
 
 
 def download_sheet_tabs_to_csv_files(service, document):
+    if not os.path.isdir(DESTINATION_DIRECTORY):
+        print("Directory '{}' not found, creating...", DESTINATION_DIRECTORY)
+        os.mkdir(DESTINATION_DIRECTORY)
     for name, data in get_sheet_data(service, document):
         filename = os.path.join(DESTINATION_DIRECTORY, "{}.csv".format(name))
         print("\t -> Writing {} sheet to {}...".format(name, filename), end="")
@@ -67,8 +70,7 @@ def get_sheet_data(service, document):
 
 
 def write_csv(file, rows):
-    csvfile = csv.writer(file)
-    csvfile.writerows(rows)
+    csv.writer(file).writerows(rows)
 
 
 if __name__ == '__main__':
