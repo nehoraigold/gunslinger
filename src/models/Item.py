@@ -1,5 +1,5 @@
 import typing
-from src.models.abstract.IInteractable import IInteractable
+from src.models.abstract.actionable.IInteractable import IInteractable
 
 
 class Item(IInteractable):

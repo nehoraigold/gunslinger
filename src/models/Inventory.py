@@ -6,9 +6,6 @@ class Inventory:
     def __init__(self):
         self.items = []
 
-    def Has(self, name: str) -> bool:
-        return any([name in item.GetAllNames() for item in self.items])
-
     def Add(self, item: Item) -> None:
         self.items.append(item)
 

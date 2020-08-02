@@ -21,9 +21,9 @@ class CSVPlayerBuilder(IBuilder):
         coordinate = (int(x_coordinate), int(y_coordinate))
         player_name = name.strip().capitalize()
         player = Player(coordinate, player_name if len(player_name) != 0 else "Roland")
-        self.add_items_to_player_inventory(player.GetInventory(), items.split(";"))
+        self.add_items_to_player_inventory(player, items.split(";"))
         return player
 
-    def add_items_to_player_inventory(self, inventory: Inventory, items: typing.List[str]) -> None:
+    def add_items_to_player_inventory(self, player: Player, items: typing.List[str]) -> None:
         for item_name in items:
-            inventory.Add(self.item_builder.Build(item_name.strip().lower()))
+            player.Take(self.item_builder.Build(item_name.strip().lower()))

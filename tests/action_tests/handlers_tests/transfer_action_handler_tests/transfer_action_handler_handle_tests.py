@@ -18,13 +18,13 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
     def add_items_to_player(self, *items: Item) -> None:
         for item in items:
             item.SetTransferability(self.transferable)
-            self.player.GetInventory().Add(item)
+            self.player.Take(item)
 
     def create_room_with(self, *items: Item) -> Room:
         room = Room("name")
         for item in items:
             item.SetTransferability(self.transferable)
-            room.GetInventory().Add(item)
+            room.Take(item)
         return room
 
     def test_handle_take_action_sanity(self):
@@ -37,8 +37,8 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(room.GetInventory().Peek(str(item)))
-        self.assertEqual(self.player.GetInventory().Peek(str(item)), item)
+        self.assertIsNone(room.Has(str(item)))
+        self.assertEqual(self.player.Has(str(item)), item)
 
     def test_handle_take_action_with_alternate_name(self):
         # Arrange
@@ -52,8 +52,8 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(room.GetInventory().Peek(str(item)))
-        self.assertEqual(self.player.GetInventory().Peek(str(item)), item)
+        self.assertIsNone(room.Has(str(item)))
+        self.assertEqual(self.player.Has(str(item)), item)
 
     def test_handle_take_action_item_not_in_room(self):
         # Arrange
@@ -65,8 +65,8 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(room.GetInventory().Peek(str(item)))
-        self.assertIsNone(self.player.GetInventory().Peek(str(item)))
+        self.assertIsNone(room.Has(str(item)))
+        self.assertIsNone(self.player.Has(str(item)))
 
     def test_handle_take_action_item_not_transferable(self):
         # Arrange
@@ -79,8 +79,8 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(self.player.GetInventory().Peek(str(item)))
-        self.assertEqual(room.GetInventory().Peek(str(item)), item)
+        self.assertIsNone(self.player.Has(str(item)))
+        self.assertEqual(room.Has(str(item)), item)
 
     def test_handle_drop_action_sanity(self):
         # Arrange
@@ -93,8 +93,8 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(self.player.GetInventory().Peek(str(item)))
-        self.assertEqual(room.GetInventory().Peek(str(item)), item)
+        self.assertIsNone(self.player.Has(str(item)))
+        self.assertEqual(room.Has(str(item)), item)
 
     def test_handle_drop_action_with_alternate_name(self):
         # Arrange
@@ -109,8 +109,8 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(self.player.GetInventory().Peek(str(item)))
-        self.assertEqual(room.GetInventory().Peek(str(item)), item)
+        self.assertIsNone(self.player.Has(str(item)))
+        self.assertEqual(room.Has(str(item)), item)
 
     def test_handle_drop_action_item_not_in_player_inventory(self):
         # Arrange
@@ -122,8 +122,8 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(room.GetInventory().Peek(str(item)))
-        self.assertIsNone(self.player.GetInventory().Peek(str(item)))
+        self.assertIsNone(room.Has(str(item)))
+        self.assertIsNone(self.player.Has(str(item)))
 
     def test_handle_drop_action_item_not_transferable(self):
         # Arrange
@@ -137,5 +137,5 @@ class TransferActionHandlerHandleTests(unittest.TestCase):
         self.handler.Handle(action, room)
 
         # Assert
-        self.assertIsNone(room.GetInventory().Peek(str(item)))
-        self.assertEqual(self.player.GetInventory().Peek(str(item)), item)
+        self.assertIsNone(room.Has(str(item)))
+        self.assertEqual(self.player.Has(str(item)), item)

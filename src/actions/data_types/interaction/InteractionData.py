@@ -1,6 +1,3 @@
-import typing
-
-
 class InteractionData:
     def __init__(self, verb: str, noun: str):
         self.verb = verb

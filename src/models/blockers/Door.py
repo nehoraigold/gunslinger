@@ -30,9 +30,10 @@ class Door(IBlocker):
         if not self.locked:
             return "The {} is already unlocked.".format(self.name)
 
-        item = player.GetInventory().Pop(self.required_item_name)
+        item = player.Has(self.required_item_name)
         if item is not None:
             self.locked = False
+            player.Drop(item)
             return "You unlocked the {}.".format(self.name)
 
         return "You could not unlock the {}.".format(self.name)

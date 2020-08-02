@@ -1,11 +1,12 @@
 import typing
-from abc import ABCMeta, abstractmethod
-from src.models.Inventory import Inventory
-from src.models.blockers.Blocker import Blocker
+from abc import abstractmethod
+from src.models.abstract.actionable.ITransferor import ITransferor
+from src.models.blockers.abstract.IBlocker import IBlocker
+from src.models.Item import Item
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
-class IRoom(metaclass=ABCMeta):
+class IRoom(ITransferor):
     @abstractmethod
     def HasVisited(self) -> bool:
         raise NotImplementedError
@@ -23,17 +24,27 @@ class IRoom(metaclass=ABCMeta):
         raise NotImplementedError
 
     @abstractmethod
-    def GetBlocker(self, direction: MoveDirection) -> typing.Union[None, Blocker]:
+    def GetBlocker(self, direction: MoveDirection) -> typing.Union[None, IBlocker]:
         raise NotImplementedError
 
     @abstractmethod
-    def GetAllBlockers(self) -> typing.List[Blocker]:
+    def GetAllBlockers(self) -> typing.List[IBlocker]:
         raise NotImplementedError
 
     @abstractmethod
-    def AddBlocker(self, direction: MoveDirection, blocker: Blocker) -> None:
+    def AddBlocker(self, direction: MoveDirection, blocker: IBlocker) -> None:
         raise NotImplementedError
 
     @abstractmethod
-    def GetInventory(self) -> Inventory:
+    def Take(self, item: Item) -> None:
         raise NotImplementedError
+
+    @abstractmethod
+    def Drop(self, item: Item) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def Has(self, item_name: str) -> Item:
+        raise NotImplementedError
+
+

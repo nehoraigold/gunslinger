@@ -16,7 +16,7 @@ class MuleCheckpoint(IBlocker):
         return None
 
     def AllowsPassage(self, player: Player = None) -> bool:
-        return not player.GetInventory().Has("mule")
+        return not player.Has("mule")
 
     def __repr__(self):
         return self.name

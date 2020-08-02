@@ -39,7 +39,7 @@ class DoorInteractTests(unittest.TestCase):
         # Arrange
         door = Door("door")
         player = Player()
-        player.GetInventory().Add(Item("small key"))
+        player.Take(Item("small key"))
 
         # Act
         message = door.Interact("unlock", player)
@@ -47,17 +47,17 @@ class DoorInteractTests(unittest.TestCase):
         # Assert
         self.assertIsNotNone(message)
         self.assertTrue(door.AllowsPassage())
-        self.assertIsNone(player.GetInventory().Peek("small key"))
+        self.assertIsNone(player.Has("small key"))
 
     def test_unlock_when_player_has_multiple_keys_only_gets_rid_of_one(self):
         # Arrange
         door = Door("door")
         player = Player()
-        player.GetInventory().Add(Item("small key"))
-        player.GetInventory().Add(Item("small key"))
+        player.Take(Item("small key"))
+        player.Take(Item("small key"))
 
         # Act
         door.Interact("unlock", player)
 
         # Assert
-        self.assertIsNotNone(player.GetInventory().Peek("small key"))
+        self.assertIsNotNone(player.Has("small key"))

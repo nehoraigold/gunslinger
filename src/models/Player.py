@@ -1,10 +1,11 @@
 import typing
 from src.utils import Utils
-from src.models.Inventory import Inventory
+from src.models.abstract.actionable.ITransferor import ITransferor
+from src.models.Inventory import Inventory, Item
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
-class Player:
+class Player(ITransferor):
     def __init__(self, starting_location: typing.Tuple[int, int] = (0, 0), name: str = "Roland"):
         self.name = name
         self.coordinate = starting_location
@@ -13,8 +14,17 @@ class Player:
     def GetLocation(self) -> typing.Tuple[int, int]:
         return self.coordinate
 
-    def GetInventory(self) -> Inventory:
-        return self.inventory
+    def Take(self, item: Item) -> None:
+        self.inventory.Add(item)
+
+    def Drop(self, item: Item) -> None:
+        self.inventory.Remove(item)
+
+    def Has(self, item_name: str) -> Item:
+        return self.inventory.Peek(item_name)
+
+    def GetInventorySummary(self) -> typing.Dict[str, int]:
+        return self.inventory.GetSummary()
 
     def Move(self, direction: MoveDirection) -> None:
         self.coordinate = Utils.AddCoordinates(self.coordinate, direction.value)

@@ -1,6 +1,6 @@
-from abc import ABCMeta, abstractmethod
+from abc import abstractmethod
 from src.models.Player import Player
-from src.models.abstract.IInteractable import IInteractable
+from src.models.abstract.actionable.IInteractable import IInteractable
 
 
 class IBlocker(IInteractable):

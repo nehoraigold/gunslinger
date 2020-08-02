@@ -2,7 +2,8 @@ import unittest
 from src.actions.Action import ActionType, Action
 from src.actions.data_types.move.MoveDirection import MoveDirection
 from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player
-from src.models.Room import Room, Blocker
+from src.models.Room import Room
+from src.models.blockers.Blocker import Blocker
 from src.utils import Utils
 
 

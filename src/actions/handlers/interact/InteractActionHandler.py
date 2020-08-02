@@ -1,7 +1,6 @@
-import typing
 from src.actions.data_types.interaction.InteractionData import InteractionData
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
-from src.models.abstract.IInteractable import IInteractable
+from src.models.abstract.actionable.IInteractable import IInteractable
 from src.models.Player import Player
 from src.utils import Print
 
@@ -17,9 +16,9 @@ class InteractActionHandler(IActionHandler):
         Print.Message(interaction_message)
 
     def get_interactable(self, interaction_data: InteractionData, current_room: IRoom) -> IInteractable:
-        item = current_room.GetInventory().Peek(interaction_data.GetNoun())
+        item = current_room.Has(interaction_data.GetNoun())
         if item is None:
-            item = self.player.GetInventory().Peek(interaction_data.GetNoun())
+            item = self.player.Has(interaction_data.GetNoun())
         if item is None:
             for blocker in current_room.GetAllBlockers():
                 if str(blocker) == interaction_data.GetNoun():

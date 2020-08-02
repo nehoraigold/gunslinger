@@ -9,7 +9,7 @@ class InventoryActionHandler(IActionHandler):
         self.player = player
 
     def Handle(self, action: Action, room: IRoom) -> None:
-        inventory_summary = self.player.GetInventory().GetSummary()
+        inventory_summary = self.player.GetInventorySummary()
         if len(inventory_summary) == 0:
             Print.Message("You don't have anything right now.")
         else:
