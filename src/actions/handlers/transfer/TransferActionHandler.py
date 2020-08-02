@@ -1,7 +1,7 @@
 import typing
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
 from src.actions.data_types.transfer.TransferData import TransferData, TransferType
-from src.models.abstract.actionable.ITransferor import ITransferor
+from src.interfaces.Transferor import Transferor
 from src.models.Player import Player
 from src.models.Item import Item
 from src.utils import Print
@@ -34,7 +34,7 @@ class TransferActionHandler(IActionHandler):
         verb = "took" if transfer_type == TransferType.TAKE else "dropped"
         return "You {} the {}.".format(verb, str(item))
 
-    def get_dropper_and_taker(self, transfer_type: TransferType, room: IRoom) -> typing.Tuple[ITransferor, ITransferor]:
+    def get_dropper_and_taker(self, transfer_type: TransferType, room: IRoom) -> typing.Tuple[Transferor, Transferor]:
         dropper = room if transfer_type == TransferType.TAKE else self.player
         taker = self.player if transfer_type == TransferType.TAKE else room
         return dropper, taker

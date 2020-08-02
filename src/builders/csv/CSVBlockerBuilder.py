@@ -1,6 +1,6 @@
 import typing
 from src.builders.abstract.IBuilder import IBuilder
-from src.builders.factories.BlockerFactory import BlockerFactory, IBlocker
+from src.models.blockers.abstract.BlockerFactory import BlockerFactory, IBlocker
 from src.utils import Utils
 
 

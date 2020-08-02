@@ -1,12 +1,12 @@
 import typing
 from abc import abstractmethod
-from src.models.abstract.actionable.ITransferor import ITransferor
+from src.interfaces.Transferor import Transferor
 from src.models.blockers.abstract.IBlocker import IBlocker
 from src.models.Item import Item
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
-class IRoom(ITransferor):
+class IRoom(Transferor):
     @abstractmethod
     def HasVisited(self) -> bool:
         raise NotImplementedError

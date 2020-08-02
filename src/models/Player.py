@@ -1,11 +1,11 @@
 import typing
 from src.utils import Utils
-from src.models.abstract.actionable.ITransferor import ITransferor
+from src.interfaces.Transferor import Transferor
 from src.models.Inventory import Inventory, Item
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
-class Player(ITransferor):
+class Player(Transferor):
     def __init__(self, starting_location: typing.Tuple[int, int] = (0, 0), name: str = "Roland"):
         self.name = name
         self.coordinate = starting_location

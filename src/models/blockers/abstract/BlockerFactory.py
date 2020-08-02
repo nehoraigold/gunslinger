@@ -1,4 +1,4 @@
-from src.builders.abstract.IFactory import IFactory
+from src.models.abstract.IFactory import IFactory
 from src.models.blockers.Blocker import Blocker, IBlocker
 from src.models.blockers.Door import Door
 from src.models.blockers.MuleCheckpoint import MuleCheckpoint

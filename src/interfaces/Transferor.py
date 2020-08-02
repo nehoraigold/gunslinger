@@ -2,7 +2,7 @@ from abc import ABCMeta, abstractmethod
 from src.models.Item import Item
 
 
-class ITransferor(metaclass=ABCMeta):
+class Transferor(metaclass=ABCMeta):
     @abstractmethod
     def Take(self, item: Item) -> None:
         raise NotImplementedError

@@ -1,8 +1,8 @@
 import typing
-from src.models.abstract.actionable.IInteractable import IInteractable
+from src.interfaces.Interactable import Interactable
 
 
-class Item(IInteractable):
+class Item(Interactable):
     EXAMINE_INTERACTION = "examine"
 
     def __init__(self, name: str):

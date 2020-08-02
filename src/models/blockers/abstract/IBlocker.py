@@ -1,9 +1,9 @@
 from abc import abstractmethod
 from src.models.Player import Player
-from src.models.abstract.actionable.IInteractable import IInteractable
+from src.interfaces.Interactable import Interactable
 
 
-class IBlocker(IInteractable):
+class IBlocker(Interactable):
     DEFAULT_BLOCK_MESSAGE = "You can't go that way."
 
     @abstractmethod

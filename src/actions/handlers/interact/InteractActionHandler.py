@@ -1,6 +1,6 @@
 from src.actions.data_types.interaction.InteractionData import InteractionData
 from src.actions.handlers.abstract.IActionHandler import IActionHandler, Action, IRoom
-from src.models.abstract.actionable.IInteractable import IInteractable
+from src.interfaces.Interactable import Interactable
 from src.models.Player import Player
 from src.utils import Print
 
@@ -15,7 +15,7 @@ class InteractActionHandler(IActionHandler):
         interaction_message = self.interact_with(interactable, interaction_data)
         Print.Message(interaction_message)
 
-    def get_interactable(self, interaction_data: InteractionData, current_room: IRoom) -> IInteractable:
+    def get_interactable(self, interaction_data: InteractionData, current_room: IRoom) -> Interactable:
         item = current_room.Has(interaction_data.GetNoun())
         if item is None:
             item = self.player.Has(interaction_data.GetNoun())
@@ -26,7 +26,7 @@ class InteractActionHandler(IActionHandler):
                     break
         return item
 
-    def interact_with(self, interactable: IInteractable, interaction_data: InteractionData) -> str:
+    def interact_with(self, interactable: Interactable, interaction_data: InteractionData) -> str:
         if interactable is None:
             return "No {} found.".format(interaction_data.GetNoun())
         message = interactable.Interact(interaction_data.GetVerb(), self.player)
