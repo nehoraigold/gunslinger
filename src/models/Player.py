@@ -28,3 +28,6 @@ class Player(ITransferor):
 
     def Move(self, direction: MoveDirection) -> None:
         self.coordinate = Utils.AddCoordinates(self.coordinate, direction.value)
+
+    def __repr__(self):
+        return self.name
