@@ -2,4 +2,4 @@ name,type,block message
 wall,,There's a wall in your way.
 door,door,The door is locked.
 desert,,The sun's rays scald your skin. You decide to turn back.
-no mule,,You aren't allowed inside with a mule!
+mule checkpoint,mule checkpoint,You aren't allowed inside with a mule!

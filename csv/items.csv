@@ -1,5 +1,6 @@
-name,description,alternative names,interactions,interaction descriptions,takeable,value
+name,description,alternative names,interactions,interaction descriptions,transferable,value
 devil grass tuft,"The devil-grass is jaundice yellow with a foul, yet intoxicating smell.",grass; devi-grass; devilgrass; weed; devil-weed,smoke; eat,"You consider smoking the devil-grass, but decide against it. Doing so would lead you down a path you would rather not take.; You consider eating the devil-grass, but decide against it. Doing so would lead you down a path you would rather not take.",TRUE,2
 small key,"It's a small, bronze key.",key,,,TRUE,5
 old piano,It's an old wooden piano with the front taken off so that the hammers can be seen as the keys are played.,piano,play,You pluck a few notes on the dusty keys. The thing seems like it hasn't been tuned in years.,FALSE
 entrance sign,"The sign is made of old, broken wood, with paint that has long ago faded from the sun. The thick, blocky letters read: ""Welcome to Tull.""",sign,read,"The sign reads: ""Welcome to Tull.""",FALSE
+mule,An old mule.,,pet,"The old thing stinks, but you pet her rough hide anyway. Perhaps lovingly, perhaps absentmindedly. She doesn't react.",FALSE,20

@@ -21,4 +21,4 @@ class BlockerBasicFunctionsTests(unittest.TestCase):
 
     def test_allow_always_returns_false(self):
         blocker = Blocker("wall")
-        self.assertFalse(blocker.Allow())
+        self.assertFalse(blocker.AllowsPassage())

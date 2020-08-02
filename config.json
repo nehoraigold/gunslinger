@@ -2,5 +2,6 @@
     "worldFilePath": "csv/map.csv",
     "roomFilePath": "csv/rooms.csv",
     "itemFilePath": "csv/items.csv",
-    "blockerFilePath": "csv/blockers.csv"
+    "blockerFilePath": "csv/blockers.csv",
+    "playerFilePath": "csv/player.csv"
 }

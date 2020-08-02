@@ -1,14 +1,12 @@
-from src.models.blockers.abstract.IBlocker import IBlocker
+from src.models.blockers.abstract.IBlocker import IBlocker, Player
 
 
 class Blocker(IBlocker):
-    DEFAULT_BLOCK_MESSAGE = "You can't go that way."
-
     def __init__(self, name: str):
         self.name = name
         self.block_message = self.DEFAULT_BLOCK_MESSAGE
 
-    def Allow(self) -> bool:
+    def AllowsPassage(self, player: Player = None) -> bool:
         return False
 
     def SetBlockMessage(self, block_message: str) -> None:

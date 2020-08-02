@@ -1,10 +1,13 @@
-from abc import abstractmethod
+from abc import ABCMeta, abstractmethod
+from src.models.Player import Player
 from src.models.abstract.IInteractable import IInteractable
 
 
 class IBlocker(IInteractable):
+    DEFAULT_BLOCK_MESSAGE = "You can't go that way."
+
     @abstractmethod
-    def Allow(self) -> bool:
+    def AllowsPassage(self, player: Player = None) -> bool:
         raise NotImplementedError
 
     @abstractmethod
@@ -17,4 +20,8 @@ class IBlocker(IInteractable):
 
     @abstractmethod
     def Interact(self, interaction: str, context: any = None) -> str:
+        raise NotImplementedError
+
+    @abstractmethod
+    def __repr__(self):
         raise NotImplementedError

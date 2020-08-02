@@ -2,14 +2,14 @@ from src.models.Player import Player
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.actions.parsers.ActionParser import ActionParser, ParseException
 from src.actions.handlers.ActionHandler import ActionHandler
-from src.builders.WorldBuilder import BuildWorld
+from src.builders.WorldBuilder import BuildWorld, BuildPlayer
 from src.utils import Print
 
 
 def main():
     configs = ConfigsLoader("config.json")
     world = BuildWorld(configs)
-    player = Player((1, 6))
+    player = BuildPlayer(configs)
     action_handler = ActionHandler(world, player)
     room = world.GetRoom(player.GetLocation())
     Print.VisitTo(room)

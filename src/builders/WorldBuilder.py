@@ -5,11 +5,17 @@ from src.builders.csv.CSVBlockerBuilder import IBlocker, CSVBlockerBuilder
 from src.builders.csv.CSVRoomBuilder import Room, CSVRoomBuilder, IBuilder
 from src.builders.csv.CSVItemBuilder import Item, CSVItemBuilder
 from src.builders.csv.CSVWorldBuilder import World, CSVWorldBuilder
+from src.builders.csv.CSVPlayerBuilder import Player, CSVPlayerBuilder
 
 
 def BuildWorld(configs: ConfigsLoader) -> World:
     world_builder = create_builder(configs, World)
     return world_builder.Build()
+
+
+def BuildPlayer(configs: ConfigsLoader) -> Player:
+    player_builder = create_builder(configs, Player)
+    return player_builder.Build()
 
 
 def create_builder(configs: ConfigsLoader, builder_type: typing.Type) -> IBuilder:
@@ -44,15 +50,23 @@ def create_item_builder(configs: ConfigsLoader) -> IBuilder:
             return builder(file_path)
 
 
+def create_player_builder(configs: ConfigsLoader) -> IBuilder:
+    file_path = configs.Get("playerFilePath")
+    for pattern, builder in PLAYER_BUILDER.items():
+        if re.search(pattern, file_path):
+            return builder(file_path, create_builder(configs, Item))
+
+
+CSV_TYPE = r'\.csv$'
+JSON_TYPE = r'\.json$'
+
 SWITCHER = {
     World: create_world_builder,
     Room: create_room_builder,
     IBlocker: create_blocker_builder,
-    Item: create_item_builder
+    Item: create_item_builder,
+    Player: create_player_builder
 }
-
-CSV_TYPE = r'\.csv$'
-JSON_TYPE = r'\.json$'
 
 WORLD_BUILDERS = {
     CSV_TYPE: CSVWorldBuilder
@@ -68,4 +82,8 @@ BLOCKER_BUILDERS = {
 
 ITEM_BUILDER = {
     CSV_TYPE: CSVItemBuilder
+}
+
+PLAYER_BUILDER = {
+    CSV_TYPE: CSVPlayerBuilder
 }

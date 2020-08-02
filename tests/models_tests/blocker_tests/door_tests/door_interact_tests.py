@@ -33,7 +33,7 @@ class DoorInteractTests(unittest.TestCase):
 
         # Assert
         self.assertIsNotNone(message)
-        self.assertFalse(door.Allow())
+        self.assertFalse(door.AllowsPassage())
 
     def test_unlock_when_player_has_key_results_in_door_unlocked_and_key_gone(self):
         # Arrange
@@ -46,7 +46,7 @@ class DoorInteractTests(unittest.TestCase):
 
         # Assert
         self.assertIsNotNone(message)
-        self.assertTrue(door.Allow())
+        self.assertTrue(door.AllowsPassage())
         self.assertIsNone(player.GetInventory().Peek("small key"))
 
     def test_unlock_when_player_has_multiple_keys_only_gets_rid_of_one(self):

@@ -1,5 +1,4 @@
-from src.models.blockers.abstract.IBlocker import IBlocker
-from src.models.Player import Player
+from src.models.blockers.abstract.IBlocker import IBlocker, Player
 
 
 class Door(IBlocker):
@@ -12,7 +11,7 @@ class Door(IBlocker):
         self.required_item_name = self.DEFAULT_REQUIRED_ITEM_NAME
         self.block_message = self.DEFAULT_BLOCK_MESSAGE
 
-    def Allow(self) -> bool:
+    def AllowsPassage(self, player: Player = None) -> bool:
         return not self.locked
 
     def SetBlockMessage(self, block_message: str) -> None:
