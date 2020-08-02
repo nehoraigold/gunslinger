@@ -9,7 +9,7 @@ SCOPES = ['https://www.googleapis.com/auth/drive.readonly'] # If modifying these
 PICKLE_FILE_PATH = os.path.join(os.path.dirname(__file__), "token.pickle")
 CREDENTIALS_FILE_PATH = os.path.join(os.path.dirname(__file__), "credentials.json")
 SPREADSHEET_ID = "1J2Nxaoq8fk3TEQ_3n_n7SNYkQuhXLQypKims0MNazlU"
-DESTINATION_DIRECTORY = os.path.join(os.getcwd(), "csv")
+DESTINATION_DIRECTORY = os.path.join(os.getcwd(), "content/csv")
 
 
 def main():
