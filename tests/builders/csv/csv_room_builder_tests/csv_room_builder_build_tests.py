@@ -12,16 +12,17 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
     DEFAULT_NAME = "Dungeon"
     DEFAULT_DESC = "A damp, dark dungeon. Pretty gloomy, all in all."
     DEFAULT_FIRST_TIME_EVENT = ""
+    DEFAULT_GOLD = ""
     DEFAULT_INTERACTABLES = []
     DEFAULT_ITEMS = []
     DEFAULT_NPCS = []
     DEFAULT_BLOCKERS = {}
 
     @staticmethod
-    def create_csv_row(name: str, desc: str, first_time_event: str,
+    def create_csv_row(name: str, desc: str, first_time_event: str, gold: str,
                        item_names: typing.List[str], npc_names: typing.List[str],
                        blockers: typing.Dict[MoveDirection, str]) -> typing.List[str]:
-        return [name, desc, first_time_event,
+        return [name, desc, first_time_event, gold,
                 '; '.join(item_names),
                 '; '.join(npc_names),
                 blockers.get(MoveDirection.UP, ""),
@@ -33,6 +34,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         return self.create_csv_row(self.DEFAULT_NAME,
                                    self.DEFAULT_DESC,
                                    self.DEFAULT_FIRST_TIME_EVENT,
+                                   self.DEFAULT_GOLD,
                                    self.DEFAULT_ITEMS,
                                    self.DEFAULT_NPCS,
                                    self.DEFAULT_BLOCKERS)

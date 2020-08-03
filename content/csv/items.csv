@@ -4,3 +4,4 @@ small key,"It's a small, bronze key.",key,,,TRUE,5
 old piano,It's an old wooden piano with the front taken off so that the hammers can be seen as the keys are played.,piano,play,You pluck a few notes on the dusty keys. The thing seems like it hasn't been tuned in years.,FALSE
 entrance sign,"The sign is made of old, broken wood, with paint that has long ago faded from the sun. The thick, blocky letters read: ""Welcome to Tull.""",sign,read,"The sign reads: ""Welcome to Tull.""",FALSE
 mule,An old mule.,,pet,"The old thing stinks, but you pet her rough hide anyway. Perhaps lovingly, perhaps absentmindedly. She doesn't react.",FALSE,20
+gold,"The gold coins are far from polished, but they still glimmer as you turn them between your fingers. They aren't much, but still more than most have now that the world has moved on.",money; coins; gold coins

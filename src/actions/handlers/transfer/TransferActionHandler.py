@@ -17,7 +17,8 @@ class TransferActionHandler(IActionHandler):
         item = dropper.Has(item_name)
 
         if item is None:
-            message = "There is no {} for you to {}.".format(item_name, str(transfer_type.value).lower())
+            verb = "are" if item_name[-1] == "s" else "is"
+            message = "There {} no {} for you to {}.".format(verb, item_name, str(transfer_type.value).lower())
         elif not item.IsTransferable():
             message = "You cannot {} the {}.".format(str(transfer_type.value).lower(), str(item))
         else:

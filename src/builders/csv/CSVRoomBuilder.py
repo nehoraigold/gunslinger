@@ -19,10 +19,11 @@ class CSVRoomBuilder(IBuilder):
                 return self.get_room_from_row(row)
 
     def get_room_from_row(self, row: typing.List[str]) -> Room:
-        name, description, first_time_event, items, npcs, *blockers = tuple(row)
+        name, description, first_time_event, gold, items, npcs, *blockers = tuple(row)
         room = Room(name)
         self.set_description(room, description)
         self.set_items(room, items)
+        self.set_gold(room, gold)
         if any(blockers):
             self.set_blockers(room, blockers)
         return room
@@ -35,6 +36,18 @@ class CSVRoomBuilder(IBuilder):
         item_names = [name.strip().lower() for name in items.split(self.INNER_CELL_DELIMITER) if len(name.strip()) != 0]
         for item_name in item_names:
             room.Take(self.item_builder.Build(item_name))
+
+    def set_gold(self, room: Room, amount: str) -> None:
+        try:
+            value = int(amount)
+        except ValueError:
+            return
+        if value == 0:
+            return
+        gold = self.item_builder.Build("gold")
+        gold.SetTransferability(True)
+        gold.SetValue(value)
+        room.Take(gold)
 
     def set_blockers(self, room: Room, blockers: typing.List[str]) -> None:
         BLOCKER_ORDER = [MoveDirection.UP, MoveDirection.DOWN, MoveDirection.LEFT, MoveDirection.RIGHT]
