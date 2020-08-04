@@ -2,7 +2,7 @@ from src.models.Player import Player
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.actions.parsers.ActionParser import ActionParser, ParseException
 from src.actions.handlers.ActionHandler import ActionHandler
-from src.builders.WorldBuilder import BuildWorld, BuildPlayer
+from src.builders.GameBuilder import BuildWorld, BuildPlayer
 from src.utils import Print
 
 
