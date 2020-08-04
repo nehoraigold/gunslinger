@@ -1,11 +1,13 @@
 import typing
 import re
+
 from src.configs.ConfigsLoader import ConfigsLoader
 from src.builders.csv.CSVBlockerBuilder import IBlocker, CSVBlockerBuilder
 from src.builders.csv.CSVRoomBuilder import Room, CSVRoomBuilder, IBuilder
 from src.builders.csv.CSVItemBuilder import Item, CSVItemBuilder
 from src.builders.csv.CSVWorldBuilder import World, CSVWorldBuilder
 from src.builders.csv.CSVPlayerBuilder import Player, CSVPlayerBuilder
+from src.builders.csv.CSVNonPlayableCharacterBuilder import CSVNonPlayableCharacterBuilder, INonPlayableCharacter
 
 
 def BuildWorld(configs: ConfigsLoader) -> World:
@@ -33,7 +35,10 @@ def create_room_builder(configs: ConfigsLoader) -> IBuilder:
     file_path = configs.Get("roomFilePath")
     for pattern, builder in ROOM_BUILDERS.items():
         if re.search(pattern, file_path):
-            return builder(file_path, create_builder(configs, IBlocker), create_builder(configs, Item))
+            return builder(file_path,
+                           create_builder(configs, IBlocker),
+                           create_builder(configs, Item),
+                           create_builder(configs, INonPlayableCharacter))
 
 
 def create_blocker_builder(configs: ConfigsLoader) -> IBuilder:
@@ -57,6 +62,13 @@ def create_player_builder(configs: ConfigsLoader) -> IBuilder:
             return builder(file_path, create_builder(configs, Item))
 
 
+def create_npc_builder(configs: ConfigsLoader) -> IBuilder:
+    file_path = configs.Get("npcFilePath")
+    for pattern, builder in NPC_BUILDER.items():
+        if re.search(pattern, file_path):
+            return builder(file_path)
+
+
 CSV_TYPE = r'\.csv$'
 JSON_TYPE = r'\.json$'
 
@@ -65,7 +77,8 @@ SWITCHER = {
     Room: create_room_builder,
     IBlocker: create_blocker_builder,
     Item: create_item_builder,
-    Player: create_player_builder
+    Player: create_player_builder,
+    INonPlayableCharacter: create_npc_builder
 }
 
 WORLD_BUILDERS = {
@@ -86,4 +99,8 @@ ITEM_BUILDER = {
 
 PLAYER_BUILDER = {
     CSV_TYPE: CSVPlayerBuilder
+}
+
+NPC_BUILDER = {
+    CSV_TYPE: CSVNonPlayableCharacterBuilder
 }

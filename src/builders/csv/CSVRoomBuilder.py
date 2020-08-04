@@ -8,10 +8,11 @@ class CSVRoomBuilder(IBuilder):
     INNER_CELL_DELIMITER = ";"
     NAME_INDEX = 0
 
-    def __init__(self, csv_file_path: str, blocker_builder: IBuilder, item_builder: IBuilder):
+    def __init__(self, csv_file_path: str, blocker_builder: IBuilder, item_builder: IBuilder, npc_builder: IBuilder):
         self.csv_file_path = csv_file_path
         self.blocker_builder = blocker_builder
         self.item_builder = item_builder
+        self.npc_builder = npc_builder
 
     def Build(self, room_name: str) -> Room:
         for row in Utils.LoadCSV(self.csv_file_path):
@@ -23,6 +24,7 @@ class CSVRoomBuilder(IBuilder):
         room = Room(name)
         self.set_description(room, description)
         self.set_items(room, items)
+        self.set_npcs(room, npcs)
         self.set_gold(room, gold)
         if any(blockers):
             self.set_blockers(room, blockers)
@@ -55,3 +57,9 @@ class CSVRoomBuilder(IBuilder):
             if len(blocker.strip()) != 0:
                 blocker = self.blocker_builder.Build(blocker.strip())
                 room.AddBlocker(BLOCKER_ORDER[i], blocker)
+
+    def set_npcs(self, room: Room, npcs: str) -> None:
+        npc_names = [name.strip().lower() for name in npcs.split(self.INNER_CELL_DELIMITER) if len(name.strip()) != 0]
+        for character_name in npc_names:
+            npc = self.npc_builder.Build(character_name)
+            room.AddNonPlayableCharacter(npc)
