@@ -3,5 +3,6 @@
     "roomFilePath": "content/csv/rooms.csv",
     "itemFilePath": "content/csv/items.csv",
     "blockerFilePath": "content/csv/blockers.csv",
-    "playerFilePath": "content/csv/player.csv"
+    "playerFilePath": "content/csv/player.csv",
+    "npcFilePath": "content/csv/npcs.csv"
 }
