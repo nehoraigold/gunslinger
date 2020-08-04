@@ -5,7 +5,7 @@ class ActionType(enum.Enum):
     MOVE = "MOVE"
     LOOK = "LOOK"
     TRANSFER = "TRANSFER"
-    SPEAK = "SPEAK"
+    TALK = "TALK"
     INTERACT = "INTERACT"
     INVENTORY = "INVENTORY"
     HELP = "HELP"

@@ -4,6 +4,7 @@ from src.actions.handlers.inventory.InventoryActionHandler import InventoryActio
 from src.actions.handlers.move.MoveActionHandler import MoveActionHandler, World, Player
 from src.actions.handlers.look.LookActionHandler import LookActionHandler
 from src.actions.handlers.quit.QuitActionHandler import QuitActionHandler
+from src.actions.handlers.talk.TalkActionHandler import TalkActionHandler
 from src.actions.handlers.transfer.TransferActionHandler import TransferActionHandler
 from src.actions.handlers.interact.InteractActionHandler import InteractActionHandler
 
@@ -14,6 +15,7 @@ class ActionHandler(IActionHandler):
             ActionType.MOVE: MoveActionHandler(world, player),
             ActionType.LOOK: LookActionHandler(),
             ActionType.TRANSFER: TransferActionHandler(player),
+            ActionType.TALK: TalkActionHandler(player),
             ActionType.INTERACT: InteractActionHandler(player),
             ActionType.INVENTORY: InventoryActionHandler(player),
             ActionType.QUIT: QuitActionHandler()

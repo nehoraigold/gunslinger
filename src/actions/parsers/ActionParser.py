@@ -3,6 +3,7 @@ from src.actions.parsers.look.LookActionParser import LookActionParser
 from src.actions.parsers.transfer.TransferActionParser import TransferActionParser
 from src.actions.parsers.quit.QuitActionParser import QuitActionParser
 from src.actions.parsers.interact.InteractActionParser import InteractActionParser
+from src.actions.parsers.talk.TalkActionParser import TalkActionParser
 from src.actions.parsers.inventory.InventoryActionParser import InventoryActionParser
 from src.actions.parsers.ParseException import ParseException
 from src.actions.Action import Action, ActionType
@@ -13,6 +14,7 @@ class ActionParser:
         ActionType.MOVE: MoveActionParser(),
         ActionType.LOOK: LookActionParser(),
         ActionType.TRANSFER: TransferActionParser(),
+        ActionType.TALK: TalkActionParser(),
         ActionType.INVENTORY: InventoryActionParser(),
         ActionType.QUIT: QuitActionParser()
     }
