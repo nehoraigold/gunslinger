@@ -3,6 +3,7 @@ from abc import abstractmethod
 from src.interfaces.Transferor import Transferor
 from src.models.blockers.abstract.IBlocker import IBlocker
 from src.models.Item import Item
+from src.models.npcs.NonPlayableCharacter import NonPlayableCharacter
 from src.actions.data_types.move.MoveDirection import MoveDirection
 
 
@@ -33,6 +34,14 @@ class IRoom(Transferor):
 
     @abstractmethod
     def AddBlocker(self, direction: MoveDirection, blocker: IBlocker) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def AddNonPlayableCharacter(self, npc: NonPlayableCharacter) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def GetNonPlayableCharacter(self, npc_name: str) -> typing.Union[NonPlayableCharacter, None]:
         raise NotImplementedError
 
     @abstractmethod

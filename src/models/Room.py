@@ -1,5 +1,6 @@
 import typing
 from src.models.Inventory import Inventory, Item
+from src.models.npcs.abstract.INonPlayableCharacter import INonPlayableCharacter
 from src.models.abstract.IRoom import IRoom, MoveDirection, IBlocker
 
 
@@ -10,6 +11,7 @@ class Room(IRoom):
         self.has_visited: bool = False
         self.blockers: typing.Dict[MoveDirection, IBlocker] = {}
         self.inventory: Inventory = Inventory()
+        self.npcs: typing.List[INonPlayableCharacter] = []
 
     def HasVisited(self) -> bool:
         return self.has_visited
@@ -31,6 +33,16 @@ class Room(IRoom):
 
     def AddBlocker(self, direction: MoveDirection, blocker: IBlocker) -> None:
         self.blockers[direction] = blocker
+
+    def AddNonPlayableCharacter(self, npc: INonPlayableCharacter) -> None:
+        if npc.GetName() not in [character.GetName() for character in self.npcs]:
+            self.npcs.append(npc)
+
+    def GetNonPlayableCharacter(self, npc_name: str) -> typing.Union[INonPlayableCharacter, None]:
+        for character in self.npcs:
+            if npc_name.lower() in [name.lower() for name in character.GetAllNames()]:
+                return character
+        return None
 
     def Take(self, item: Item) -> None:
         self.inventory.Add(item)
