@@ -1,10 +1,11 @@
 from src.models.abstract.IFactory import IFactory
 from src.models.npcs.NonPlayableCharacter import NonPlayableCharacter, INonPlayableCharacter
+from src.models.npcs.kennerly.Kennerly import Kennerly
 
 
 class NPCFactory(IFactory):
     CHARACTERS = {
-
+        "kennerly": Kennerly()
     }
 
     @staticmethod
