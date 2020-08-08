@@ -54,6 +54,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
 
         self.blocker_builder = MockBuilder()
         self.item_builder = MockBuilder()
+        self.npc_builder = MockBuilder()
 
     def tearDown(self) -> None:
         if os.path.isfile(self.file_path):
@@ -61,7 +62,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
 
     def test_build_room_with_only_name_and_description(self):
         self.create_room_csv_file([self.create_default_room_csv_row()])
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder, self.npc_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         self.assertEqual(self.DEFAULT_NAME, str(room))
@@ -71,7 +72,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.blocker_builder.Build = lambda name: Blocker(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder, self.npc_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         self.assertIsNone(room.GetBlocker(MoveDirection.UP))
@@ -87,7 +88,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.blocker_builder.Build = lambda name: Blocker(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder, self.npc_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         self.assertEqual(blocker_name, str(room.GetBlocker(direction)))
@@ -99,7 +100,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.blocker_builder.Build = lambda name: Blocker(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder, self.npc_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         for blocker_dir, blocker_name in self.DEFAULT_BLOCKERS.items():
@@ -110,7 +111,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         item_name = "small key"
 
         self.item_builder.Build = lambda name: Item(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder, self.npc_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         self.assertIsNone(room.Has(item_name))
@@ -121,7 +122,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.item_builder.Build = lambda name: Item(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder, self.npc_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         item = room.Has(item_name)
@@ -135,7 +136,7 @@ class CSVRoomBuilderBuildTests(unittest.TestCase):
         self.create_room_csv_file([self.create_default_room_csv_row()])
 
         self.item_builder.Build = lambda name: Item(name)
-        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder)
+        csv_room_builder = CSVRoomBuilder(self.file_path, self.blocker_builder, self.item_builder, self.npc_builder)
         room = csv_room_builder.Build(self.DEFAULT_NAME)
 
         item_1 = room.Has(item_name_1)
